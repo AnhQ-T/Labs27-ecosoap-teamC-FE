@@ -6,6 +6,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 
 import DashboardHeader from '../Dashboard/Header/DashboardHeader.js';
 import DashboardMenu from '../Dashboard/DashboardMenu.js';
+import DashboardContent from '../Dashboard/Content/DashboardContent.js';
 
 function DashboardContainer() {
   return (
@@ -14,6 +15,7 @@ function DashboardContainer() {
         <DashboardHeader />
         <Layout className="menu-layout">
           <DashboardMenu />
+          <DashboardContent />
         </Layout>
       </Layout>
     </div>
