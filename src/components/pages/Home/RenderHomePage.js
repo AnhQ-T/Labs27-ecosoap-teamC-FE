@@ -2,17 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 
+import Dashboard from '../../Dashboard/Dashboard';
+
 function RenderHomePage(props) {
   const { userInfo, authService } = props;
   return (
     <div>
       <h1>Welcome {userInfo.name} </h1>
       <div>
-        <p>
-          This is an example of a common example of how we'd like for you to
-          approach components.
-        </p>
-        <p>
+        {/* <p>
           <Link to="/profile-list">Profiles Example</Link>
         </p>
         <p>
@@ -20,7 +18,8 @@ function RenderHomePage(props) {
         </p>
         <p>
           <Link to="/datavis">Data Visualizations Example</Link>
-        </p>
+        </p> */}
+        <Dashboard />
         <p>
           <Button type="primary" onClick={() => authService.logout()}>
             Logout
