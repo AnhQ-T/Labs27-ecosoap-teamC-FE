@@ -8,7 +8,7 @@ function RenderHomePage(props) {
   const { userInfo, authService } = props;
   return (
     <div>
-      <h1>Welcome {userInfo.name} </h1>
+      <h1>Welcome {userInfo.name}</h1>
       <div>
         {/* <p>
           <Link to="/profile-list">Profiles Example</Link>

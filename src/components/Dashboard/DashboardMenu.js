@@ -15,7 +15,6 @@ function DashboardMenu() {
       >
         <Menu.Item key="order-list">Order List</Menu.Item>
         <Menu.Item key="profile">Profile</Menu.Item>
-        <Menu.Item key="logout">Logout</Menu.Item>
       </Menu>
     </div>
   );
