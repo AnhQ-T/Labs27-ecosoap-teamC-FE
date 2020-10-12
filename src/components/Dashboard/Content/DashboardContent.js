@@ -8,7 +8,8 @@ function DashboardContent() {
   return (
     <div>
       <Layout className="content-layout">
-        <h2>Dashboard Content</h2>
+        <h2>Your orders</h2>
+        <h3>N/A orders</h3>
       </Layout>
     </div>
   );
