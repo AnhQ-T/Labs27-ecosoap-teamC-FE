@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Tooltip, InputNumber } from 'antd';
-
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { Form, Input, Button, InputNumber } from 'antd';
 
 import 'antd/dist/antd.css';
 
@@ -57,7 +55,7 @@ const OrderFormContainer = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your organization name',
+              message: 'Please input organization name',
             },
           ]}
         >
@@ -73,7 +71,7 @@ const OrderFormContainer = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your contact name',
+              message: 'Please input contact name',
             },
           ]}
         >
@@ -99,7 +97,7 @@ const OrderFormContainer = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your phone number',
+              message: 'Please input phone number',
             },
           ]}
         >
@@ -116,7 +114,7 @@ const OrderFormContainer = () => {
             },
             {
               required: true,
-              message: 'Please input your email address',
+              message: 'Please input email address',
             },
           ]}
         >
@@ -174,14 +172,7 @@ const OrderFormContainer = () => {
           <Input placeholder="Comments" />
         </Form.Item>
         <Form.Item {...buttonItemLayout}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            // disabled={
-            //   !form.isFieldsTouched(true) ||
-            //   form.getFieldsError().filter(({ errors }) => errors.length).length
-            // }
-          >
+          <Button type="primary" htmlType="submit">
             Submit Order
           </Button>
         </Form.Item>
