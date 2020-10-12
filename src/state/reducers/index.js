@@ -5,6 +5,8 @@ import { combineReducers } from 'redux';
 
 import { reducer as buyer } from './BuyerReducer';
 
-export default combineReducers({
+const rootReducer = combineReducers({
   buyer,
 });
+
+export default rootReducer;

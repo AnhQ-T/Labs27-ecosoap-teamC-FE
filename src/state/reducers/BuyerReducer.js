@@ -1,4 +1,4 @@
-import buyer from '../actions/index.js';
+import { buyer } from '../actions/index.js';
 
 const initialState = {
   order_list: [],
@@ -12,5 +12,7 @@ export const reducer = (state = initialState, action) => {
         order_list: action.payload,
         isFetching: true,
       };
+    default:
+      return state;
   }
 };
