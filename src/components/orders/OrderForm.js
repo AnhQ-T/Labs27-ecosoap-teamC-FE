@@ -4,16 +4,10 @@ import 'antd/dist/antd.css';
 
 import OrderFormContainer from '../orders/OrderFormContainer';
 
-{
-  /* <form onSubmit={ handleSubmit }>
-  <FormInput placeholder="Email" name="email" labelId="User Email" />
-  <FormButton buttonText="Submit" classType="default" disabled="false" />
-</form> */
-}
-
 function OrderForm() {
   return (
     <div>
+      <h1>Guest Checkout</h1>
       <OrderFormContainer />
     </div>
   );
