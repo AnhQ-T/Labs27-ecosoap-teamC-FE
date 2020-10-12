@@ -17,8 +17,10 @@ function OrderList(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  order_list: state.buyer.order_list,
-});
+const mapStateToProps = state => {
+  return {
+    rooms: state.rooms,
+  };
+};
 
 export default connect(mapStateToProps, { getBuyerOrders })(OrderList);
