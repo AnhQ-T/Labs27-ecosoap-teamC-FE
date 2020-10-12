@@ -40,22 +40,27 @@ const OrderFormContainer = () => {
         }}
         onValuesChange={onFormLayoutChange}
       >
-        <Form.Item label="Organization Name" required>
+        <Form.Item name="organizationName" label="Organization Name" required>
           <Input placeholder="Organization Name" />
         </Form.Item>
-        <Form.Item label="Organization Website">
+        <Form.Item name="organizationWebsite" label="Organization Website">
           <Input placeholder="Organization Website" />
         </Form.Item>
-        <Form.Item label="Contact Name" required>
+        <Form.Item name="contactName" label="Contact Name" required>
           <Input placeholder="Contact Name" />
         </Form.Item>
-        <Form.Item label="Number of Soap Bars Requested" required>
+        <Form.Item
+          name="soapBarNum"
+          label="Number of Soap Bars Requested"
+          required
+        >
           <Input placeholder="Number of Soap Bars Requested" />
         </Form.Item>
-        <Form.Item label="Contact Phone Number" required>
+        <Form.Item name="contactPhone" label="Contact Phone Number" required>
           <Input placeholder="Contact Phone Number" />
         </Form.Item>
         <Form.Item
+          name="contactEmail"
           label="Contact Email Address"
           required
           rules={[
@@ -71,22 +76,33 @@ const OrderFormContainer = () => {
         >
           <Input placeholder="Contact Email Address" />
         </Form.Item>
-        <Form.Item label="Address / Location">
+        <Form.Item name="address" label="Address / Location">
           <Input placeholder="Address / Location" />
         </Form.Item>
-        <Form.Item label="Country" required>
+        <Form.Item name="country" label="Country" required>
           <Input placeholder="Country" />
         </Form.Item>
-        <Form.Item label="Number of Beneficiaries" required>
+        <Form.Item
+          name="beneficiariesNum"
+          label="Number of Beneficiaries"
+          required
+        >
           <Input placeholder="Number of Beneficiaries" />
         </Form.Item>
-        <Form.Item label="Description of Hygiene Situation in Community">
+        <Form.Item
+          name="hygieneSituation"
+          label="Description of Hygiene Situation in Community"
+        >
           <Input placeholder="Description of Hygiene Situation in Community" />
         </Form.Item>
-        <Form.Item label="Description of Hygiene Initiative" required>
+        <Form.Item
+          name="hygieneInitiative"
+          label="Description of Hygiene Initiative"
+          required
+        >
           <Input placeholder="Description of Hygiene Initiative" />
         </Form.Item>
-        <Form.Item label="Comments">
+        <Form.Item name="comments" label="Comments">
           <Input placeholder="Comments" />
         </Form.Item>
         <Form.Item {...buttonItemLayout}>
