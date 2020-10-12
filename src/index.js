@@ -6,6 +6,11 @@ import {
   useHistory,
   Switch,
 } from 'react-router-dom';
+
+// Redux
+import { Provider } from 'react-redux';
+import store from './state';
+
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 
 import 'antd/dist/antd.less';
@@ -23,7 +28,9 @@ import OrderForm from './components/orders/OrderForm';
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   </Router>,
   document.getElementById('root')

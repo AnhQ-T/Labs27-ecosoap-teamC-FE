@@ -4,11 +4,15 @@ import 'antd/dist/antd.css';
 import '../../../styles/Dashboard/DashboardContent.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
 
+import OrderListContainer from '../OrderList/OrderListContainer';
+
 function DashboardContent() {
   return (
     <div>
       <Layout className="content-layout">
-        <h2>Dashboard Content</h2>
+        <h2>Your orders</h2>
+        <h3>N/A orders</h3>
+        <OrderListContainer />
       </Layout>
     </div>
   );

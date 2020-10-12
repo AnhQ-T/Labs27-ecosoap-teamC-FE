@@ -4,6 +4,9 @@ import { HomePage } from '../components/pages/Home';
 import { LoadingComponent } from '../components/common';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { Provider } from 'react-redux';
+import store from '../state/index';
+
 afterEach(cleanup);
 
 jest.mock('@okta/okta-react', () => ({
@@ -22,13 +25,15 @@ jest.mock('@okta/okta-react', () => ({
 describe('<HomeContainer /> testing suite', () => {
   test('mounts a page', async () => {
     const { findByText, getByText, queryByText } = render(
-      <Router>
-        <HomePage
-          LoadingComponent={() => (
-            <LoadingComponent message="...fetching profile" />
-          )}
-        />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <HomePage
+            LoadingComponent={() => (
+              <LoadingComponent message="...fetching profile" />
+            )}
+          />
+        </Router>
+      </Provider>
     );
     let loader = getByText(/...fetching profile/i);
     expect(loader).toBeInTheDocument();

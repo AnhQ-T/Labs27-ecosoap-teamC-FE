@@ -4,15 +4,23 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { Provider } from 'react-redux';
+import store from '../state/index';
+
 describe('<RenderHomePage /> test suite', () => {
   test('it handles a loading state', () => {
     const authService = {
       logout: jest.fn(),
     };
     const { getByText } = render(
-      <Router>
-        <RenderHomePage userInfo={{ name: 'Sara' }} authService={authService} />
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <RenderHomePage
+            userInfo={{ name: 'Sara' }}
+            authService={authService}
+          />
+        </Router>
+      </Provider>
     );
     const button = getByText(/logout/i);
     userEvent.click(button);
