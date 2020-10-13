@@ -4,10 +4,11 @@ import 'antd/dist/antd.css';
 
 import DashboardContainer from '../Dashboard/DashboardContainer.js';
 
-function Dashboard() {
+function Dashboard(props) {
+  const { userInfo, authService } = props;
   return (
     <div>
-      <DashboardContainer />
+      <DashboardContainer userInfo={userInfo} authService={authService} />
     </div>
   );
 }

@@ -2,9 +2,9 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../../../styles/Dashboard/DashboardHeader.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 function DashboardHeader() {
   return (
