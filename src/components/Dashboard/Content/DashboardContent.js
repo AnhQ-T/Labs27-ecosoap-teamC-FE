@@ -11,7 +11,6 @@ function DashboardContent() {
     <div>
       <Layout className="content-layout">
         <h2>Your orders</h2>
-        <h3>N/A orders</h3>
         <OrderListContainer />
       </Layout>
     </div>
