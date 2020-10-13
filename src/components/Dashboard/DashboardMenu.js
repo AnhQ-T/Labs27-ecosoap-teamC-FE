@@ -2,9 +2,11 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../../styles/Dashboard/DashboardMenu.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Menu } from 'antd';
 
-function DashboardMenu() {
+function DashboardMenu(props) {
+  const { authService } = props;
+
   return (
     <div>
       <Menu
@@ -15,7 +17,9 @@ function DashboardMenu() {
       >
         <Menu.Item key="order-list">Order List</Menu.Item>
         <Menu.Item key="profile">Profile</Menu.Item>
-        <Menu.Item key="logout">Logout</Menu.Item>
+        <Menu.Item key="logout" onClick={() => authService.logout()}>
+          Logout
+        </Menu.Item>
       </Menu>
     </div>
   );

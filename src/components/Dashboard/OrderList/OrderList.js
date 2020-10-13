@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { getBuyerOrders } from '../../../state/actions/BuyerAction';
@@ -9,9 +9,11 @@ import { Card } from 'antd';
 import Orders from './Orders';
 
 function OrderList(props) {
+  const { getBuyerOrders } = props;
+
   useEffect(() => {
-    props.getBuyerOrders();
-  }, []);
+    getBuyerOrders();
+  }, [getBuyerOrders]);
 
   return (
     <Card title={props.orders_list.length + ' orders'}>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../../../styles/Dashboard/DashboardContent.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 
 import OrderListContainer from '../OrderList/OrderListContainer';
 
