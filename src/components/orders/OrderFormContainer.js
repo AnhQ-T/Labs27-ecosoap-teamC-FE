@@ -4,24 +4,6 @@ import axios from 'axios';
 
 import 'antd/dist/antd.css';
 
-const initialOrder = {
-  organizationName: '',
-  organizationWebsite: '',
-  contactName: '',
-  soapBarNum: '',
-  contactPhone: '',
-  contactEmail: '',
-  address: '',
-  country: '',
-  beneficiariesNum: '',
-  hygieneSituation: '',
-  hygieneInitiative: '',
-  comments: '',
-  // created_at: '',
-  // updated_at: '',
-  // buyerId: null
-};
-
 const OrderFormContainer = () => {
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState('horizontal');
@@ -31,25 +13,16 @@ const OrderFormContainer = () => {
     setFormLayout(layout);
   };
 
-  const [order, setOrder] = useState(initialOrder);
-
-  const inputChange = e => {
-    form.setFieldsValue(e.target.value);
-  };
-
   useEffect(() => {
     forceUpdate({});
   }, []);
 
   const onFinish = values => {
-    console.log(form.getFieldsValue());
-    console.log(order);
     axios
       .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/', values)
       .then(res => {
         console.log(res);
-        // setOrder(order);
-        form.setFieldsValue(order);
+        form.setFieldsValue(values);
       })
       .catch(err => console.log(`Order form error: ${err}`));
   };
@@ -84,8 +57,6 @@ const OrderFormContainer = () => {
       <Form.Item
         name="organizationName"
         label="Organization Name"
-        // valuePropName="organizationName"
-        required
         rules={[
           {
             required: true,
@@ -93,20 +64,14 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Organization Name" onChange={inputChange} />
+        <Input placeholder="Organization Name" />
       </Form.Item>
-      <Form.Item
-        name="organizationWebsite"
-        label="Organization Website"
-        // valuePropName="organizationWebsite"
-      >
-        <Input placeholder="Organization Website" onChange={inputChange} />
+      <Form.Item name="organizationWebsite" label="Organization Website">
+        <Input placeholder="Organization Website" />
       </Form.Item>
       <Form.Item
         name="contactName"
         label="Contact Name"
-        // valuePropName="contactName"
-        required
         rules={[
           {
             required: true,
@@ -114,13 +79,11 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Name" onChange={inputChange} />
+        <Input placeholder="Contact Name" />
       </Form.Item>
       <Form.Item
         name="soapBarNum"
         label="Number of Soap Bars Requested"
-        // valuePropName="soapBarNum"
-        required
         rules={[
           {
             required: true,
@@ -128,17 +91,11 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <InputNumber
-          placeholder="Number of Soap Bars Requested"
-          // onChange={inputChange}
-          min={1}
-        />
+        <InputNumber placeholder="Number of Soap Bars Requested" min={1} />
       </Form.Item>
       <Form.Item
         name="contactPhone"
         label="Contact Phone Number"
-        // valuePropName="contactPhone"
-        required
         rules={[
           {
             required: true,
@@ -146,13 +103,11 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Phone Number" onChange={inputChange} />
+        <Input placeholder="Contact Phone Number" />
       </Form.Item>
       <Form.Item
         name="contactEmail"
         label="Contact Email Address"
-        // valuePropName="contactEmail"
-        required
         rules={[
           {
             type: 'email',
@@ -164,16 +119,14 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Email Address" onChange={inputChange} />
+        <Input placeholder="Contact Email Address" />
       </Form.Item>
       <Form.Item name="address" label="Address / Location">
-        <Input placeholder="Address / Location" onChange={inputChange} />
+        <Input placeholder="Address / Location" />
       </Form.Item>
       <Form.Item
         name="country"
         label="Country"
-        // valuePropName="country"
-        required
         rules={[
           {
             required: true,
@@ -181,13 +134,11 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Country" onChange={inputChange} />
+        <Input placeholder="Country" />
       </Form.Item>
       <Form.Item
         name="beneficiariesNum"
         label="Number of Beneficiaries"
-        // valuePropName="beneficiariesNum"
-        required
         rules={[
           {
             required: true,
@@ -195,27 +146,17 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <InputNumber
-          placeholder="Number of Beneficiaries"
-          min={1}
-          // onChange={inputChange}
-        />
+        <InputNumber placeholder="Number of Beneficiaries" min={1} />
       </Form.Item>
       <Form.Item
         name="hygieneSituation"
         label="Description of Hygiene Situation in Community"
-        // valuePropName="hygieneSituation"
       >
-        <Input
-          placeholder="Description of Hygiene Situation in Community"
-          onChange={inputChange}
-        />
+        <Input placeholder="Description of Hygiene Situation in Community" />
       </Form.Item>
       <Form.Item
         name="hygieneInitiative"
         label="Description of Hygiene Initiative"
-        // valuePropName="hygieneInitiative"
-        required
         rules={[
           {
             required: true,
@@ -223,17 +164,10 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input
-          placeholder="Description of Hygiene Initiative"
-          onChange={inputChange}
-        />
+        <Input placeholder="Description of Hygiene Initiative" />
       </Form.Item>
-      <Form.Item
-        name="comments"
-        label="Comments"
-        // valuePropName="comments"
-      >
-        <Input placeholder="Comments" onChange={inputChange} />
+      <Form.Item name="comments" label="Comments">
+        <Input placeholder="Comments" />
       </Form.Item>
       <Form.Item {...buttonItemLayout}>
         <Button type="primary" htmlType="submit">
