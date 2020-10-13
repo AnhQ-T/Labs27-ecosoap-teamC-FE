@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, InputNumber } from 'antd';
+import axios from 'axios';
 
 import 'antd/dist/antd.css';
+
+const initialOrder = {
+  organizationName: '',
+  organizationWebsite: '',
+  contactName: '',
+  soapBarNum: '',
+  contactPhone: '',
+  contactEmail: '',
+  address: '',
+  country: '',
+  beneficiariesNum: '',
+  hygieneSituation: '',
+  hygieneInitiative: '',
+  comments: '',
+  // created_at: '',
+  // updated_at: '',
+  // buyerId: null
+};
 
 const OrderFormContainer = () => {
   const [form] = Form.useForm();
@@ -12,12 +31,20 @@ const OrderFormContainer = () => {
     setFormLayout(layout);
   };
 
+  const [order, setOrder] = useState(initialOrder);
+
   useEffect(() => {
     forceUpdate({});
   }, []);
 
-  const onFinish = values => {
-    console.log('Finish:', values);
+  const onFinish = e => {
+    axios
+      .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/')
+      .then(res => {
+        console.log(res);
+        setOrder(order);
+      })
+      .catch(err => console.log(`Order form error: ${err}`));
   };
 
   const formItemLayout = {
