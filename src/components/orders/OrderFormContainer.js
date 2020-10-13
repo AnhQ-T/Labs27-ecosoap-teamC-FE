@@ -33,16 +33,22 @@ const OrderFormContainer = () => {
 
   const [order, setOrder] = useState(initialOrder);
 
+  const inputChange = e => {
+    form.setFieldsValue(e.target.value);
+  };
+
   useEffect(() => {
     forceUpdate({});
   }, []);
 
   const onFinish = e => {
+    console.log();
     axios
       .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/')
       .then(res => {
         console.log(res);
         setOrder(order);
+        // form.setFieldsValue(order)
       })
       .catch(err => console.log(`Order form error: ${err}`));
   };
@@ -64,7 +70,7 @@ const OrderFormContainer = () => {
   };
 
   return (
-    <>
+    <Form.Provider onFormFinish={onFinish} value={form}>
       <Form
         {...formItemLayout}
         layout={formLayout}
@@ -73,11 +79,12 @@ const OrderFormContainer = () => {
           layout: formLayout,
         }}
         onValuesChange={onFormLayoutChange}
-        onFinish={onFinish}
+        // onFinish={onFinish}
       >
         <Form.Item
           name="organizationName"
           label="Organization Name"
+          valuePropName="organizationName"
           required
           rules={[
             {
@@ -86,14 +93,19 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Organization Name" />
+          <Input placeholder="Organization Name" onChange={inputChange} />
         </Form.Item>
-        <Form.Item name="organizationWebsite" label="Organization Website">
-          <Input placeholder="Organization Website" />
+        <Form.Item
+          name="organizationWebsite"
+          label="Organization Website"
+          valuePropName="organizationWebsite"
+        >
+          <Input placeholder="Organization Website" onChange={inputChange} />
         </Form.Item>
         <Form.Item
           name="contactName"
           label="Contact Name"
+          valuePropName="contactName"
           required
           rules={[
             {
@@ -102,11 +114,12 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Contact Name" />
+          <Input placeholder="Contact Name" onChange={inputChange} />
         </Form.Item>
         <Form.Item
           name="soapBarNum"
           label="Number of Soap Bars Requested"
+          valuePropName="soapBarNum"
           required
           rules={[
             {
@@ -115,11 +128,16 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <InputNumber placeholder="Number of Soap Bars Requested" min={1} />
+          <InputNumber
+            placeholder="Number of Soap Bars Requested"
+            min={1}
+            // onChange={inputChange}
+          />
         </Form.Item>
         <Form.Item
           name="contactPhone"
           label="Contact Phone Number"
+          valuePropName="contactPhone"
           required
           rules={[
             {
@@ -128,11 +146,12 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Contact Phone Number" />
+          <Input placeholder="Contact Phone Number" onChange={inputChange} />
         </Form.Item>
         <Form.Item
           name="contactEmail"
           label="Contact Email Address"
+          // valuePropName="contactEmail"
           required
           rules={[
             {
@@ -145,14 +164,15 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Contact Email Address" />
+          <Input placeholder="Contact Email Address" onChange={inputChange} />
         </Form.Item>
         <Form.Item name="address" label="Address / Location">
-          <Input placeholder="Address / Location" />
+          <Input placeholder="Address / Location" onChange={inputChange} />
         </Form.Item>
         <Form.Item
           name="country"
           label="Country"
+          valuePropName="country"
           required
           rules={[
             {
@@ -161,11 +181,12 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Country" />
+          <Input placeholder="Country" onChange={inputChange} />
         </Form.Item>
         <Form.Item
           name="beneficiariesNum"
           label="Number of Beneficiaries"
+          valuePropName="beneficiariesNum"
           required
           rules={[
             {
@@ -174,17 +195,26 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <InputNumber placeholder="Number of Beneficiaries" min={1} />
+          <InputNumber
+            placeholder="Number of Beneficiaries"
+            min={1}
+            // onChange={inputChange}
+          />
         </Form.Item>
         <Form.Item
           name="hygieneSituation"
           label="Description of Hygiene Situation in Community"
+          valuePropName="hygieneSituation"
         >
-          <Input placeholder="Description of Hygiene Situation in Community" />
+          <Input
+            placeholder="Description of Hygiene Situation in Community"
+            onChange={inputChange}
+          />
         </Form.Item>
         <Form.Item
           name="hygieneInitiative"
           label="Description of Hygiene Initiative"
+          valuePropName="hygieneInitiative"
           required
           rules={[
             {
@@ -193,10 +223,13 @@ const OrderFormContainer = () => {
             },
           ]}
         >
-          <Input placeholder="Description of Hygiene Initiative" />
+          <Input
+            placeholder="Description of Hygiene Initiative"
+            onChange={inputChange}
+          />
         </Form.Item>
-        <Form.Item name="comments" label="Comments">
-          <Input placeholder="Comments" />
+        <Form.Item name="comments" label="Comments" valuePropName="comments">
+          <Input placeholder="Comments" onChange={inputChange} />
         </Form.Item>
         <Form.Item {...buttonItemLayout}>
           <Button type="primary" htmlType="submit">
@@ -204,7 +237,7 @@ const OrderFormContainer = () => {
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </Form.Provider>
   );
 };
 
