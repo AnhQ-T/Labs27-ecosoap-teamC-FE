@@ -1,13 +1,13 @@
 import React from 'react';
 
 import 'antd/dist/antd.css';
+import '../../../styles/Dashboard/Orders/OrderList.css';
 
 import { Card, Typography } from 'antd';
 
 const { Title } = Typography;
 
 function Orders(props) {
-  console.log(props.data);
   return (
     <div>
       <Card
@@ -15,9 +15,17 @@ function Orders(props) {
         title={<Title level={3}>{props.data.organizationName}</Title>}
         extra={<a href="#">Order Details</a>}
       >
-        <h4>Contact Name: {props.data.contactName}</h4>
-        <h4>Country: {props.data.country}</h4>
-        <h5>Soap Bars Ordered: {props.data.soapBarNum}</h5>
+        <div className="order-content-container">
+          <div>
+            <h4>Contact Name: {props.data.contactName}</h4>
+            <h4>Country: {props.data.country}</h4>
+            <h5>Soap Bars Ordered: {props.data.soapBarNum}</h5>
+          </div>
+          <div>
+            <h5>Created at: {props.data.created_at}</h5>
+            <h5>Updated at: {props.data.updated_at}</h5>
+          </div>
+        </div>
       </Card>
     </div>
   );
