@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getBuyerOrders } from '../../../state/actions/BuyerAction';
 
 import 'antd/dist/antd.css';
+import { Card } from 'antd';
 
 import Orders from './Orders';
 
@@ -13,12 +14,11 @@ function OrderList(props) {
   }, []);
 
   return (
-    <div>
-      <h3>{props.orders_list.length} Orders</h3>
+    <Card title={props.orders_list.length + ' orders'}>
       {props.orders_list.map((el, i) => (
         <Orders data={el} key={i} />
       ))}
-    </div>
+    </Card>
   );
 }
 
