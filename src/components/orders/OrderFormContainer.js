@@ -3,6 +3,7 @@ import { Form, Input, Button, InputNumber } from 'antd';
 import axios from 'axios';
 
 import 'antd/dist/antd.css';
+import '../../styles/OrderForm/OrderForm.css';
 
 const OrderFormContainer = () => {
   const [form] = Form.useForm();
@@ -53,6 +54,7 @@ const OrderFormContainer = () => {
       }}
       onValuesChange={onFormLayoutChange}
       onFinish={onFinish}
+      className="orderFormWrapper"
     >
       <Form.Item
         name="organizationName"
@@ -63,11 +65,12 @@ const OrderFormContainer = () => {
             message: 'Please input organization name',
           },
         ]}
+        className="formLabel"
       >
-        <Input placeholder="Organization Name" />
+        <Input placeholder="Organization Name" className="orderInput" />
       </Form.Item>
       <Form.Item name="organizationWebsite" label="Organization Website">
-        <Input placeholder="Organization Website" />
+        <Input placeholder="Organization Website" className="orderInput" />
       </Form.Item>
       <Form.Item
         name="contactName"
@@ -79,7 +82,7 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Name" />
+        <Input placeholder="Contact Name" className="orderInput" />
       </Form.Item>
       <Form.Item
         name="soapBarNum"
@@ -91,7 +94,11 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <InputNumber placeholder="Number of Soap Bars Requested" min={1} />
+        <InputNumber
+          placeholder="Number of Soap Bars Requested"
+          min={1}
+          className="orderInput"
+        />
       </Form.Item>
       <Form.Item
         name="contactPhone"
@@ -103,7 +110,7 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Phone Number" />
+        <Input placeholder="Contact Phone Number" className="orderInput" />
       </Form.Item>
       <Form.Item
         name="contactEmail"
@@ -119,10 +126,10 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Contact Email Address" />
+        <Input placeholder="Contact Email Address" className="orderInput" />
       </Form.Item>
-      <Form.Item name="address" label="Address / Location">
-        <Input placeholder="Address / Location" />
+      <Form.Item name="address" label="Address">
+        <Input placeholder="Address" className="orderInput" />
       </Form.Item>
       <Form.Item
         name="country"
@@ -134,7 +141,7 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Country" />
+        <Input placeholder="Country" className="orderInput" />
       </Form.Item>
       <Form.Item
         name="beneficiariesNum"
@@ -146,17 +153,21 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <InputNumber placeholder="Number of Beneficiaries" min={1} />
+        <InputNumber
+          placeholder="Number of Beneficiaries"
+          min={1}
+          className="orderInput"
+        />
       </Form.Item>
-      <Form.Item
-        name="hygieneSituation"
-        label="Description of Hygiene Situation in Community"
-      >
-        <Input placeholder="Description of Hygiene Situation in Community" />
+      <Form.Item name="hygieneSituation" label="Hygiene Situation">
+        <Input
+          placeholder="Description of Hygiene Situation in Community"
+          className="orderInput"
+        />
       </Form.Item>
       <Form.Item
         name="hygieneInitiative"
-        label="Description of Hygiene Initiative"
+        label="Hygiene Initiative"
         rules={[
           {
             required: true,
@@ -164,13 +175,16 @@ const OrderFormContainer = () => {
           },
         ]}
       >
-        <Input placeholder="Description of Hygiene Initiative" />
+        <Input
+          placeholder="Description of Hygiene Initiative"
+          className="orderInput"
+        />
       </Form.Item>
       <Form.Item name="comments" label="Comments">
-        <Input placeholder="Comments" />
+        <Input placeholder="Comments" className="orderInput" />
       </Form.Item>
       <Form.Item {...buttonItemLayout}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" className="orderBtn">
           Submit Order
         </Button>
       </Form.Item>
