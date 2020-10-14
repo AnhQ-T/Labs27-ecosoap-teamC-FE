@@ -25,6 +25,7 @@ import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import OrderForm from './components/orders/OrderForm';
 import Stripe from './components/Stripe/StripeOrder';
+import OrderConfirmation from './components/orders/OrderConfirmation';
 
 ReactDOM.render(
   <Router>
@@ -55,6 +56,7 @@ function App() {
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/orders" component={OrderForm} />
         <Route path="/checkout" component={Stripe} />
+        <Route path="/confirmation" component={OrderConfirmation} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
