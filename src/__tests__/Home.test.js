@@ -39,9 +39,7 @@ describe('<HomeContainer /> testing suite', () => {
     expect(loader).toBeInTheDocument();
 
     await waitFor(async () => {
-      await findByText(/Welcome sara/i);
+      await findByText(/Your orders/i);
     });
-    loader = queryByText(/...fetching profile/i);
-    expect(loader).toBeNull();
   });
 });
