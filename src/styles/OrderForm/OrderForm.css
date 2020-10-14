@@ -1,0 +1,20 @@
+h1 {
+  margin-top: 2%;
+  text-align: center;
+}
+
+.orderBtn {
+  display: block;
+  margin: 0 auto;
+}
+
+.orderInput {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.orderFormWrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+

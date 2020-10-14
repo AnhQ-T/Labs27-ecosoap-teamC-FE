@@ -24,6 +24,7 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import OrderForm from './components/orders/OrderForm';
+import Stripe from './components/Stripe/StripeOrder';
 
 ReactDOM.render(
   <Router>
@@ -53,6 +54,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/orders" component={OrderForm} />
+        <Route path="/checkout" component={Stripe} />
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
