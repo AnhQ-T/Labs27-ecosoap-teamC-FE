@@ -3,7 +3,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import '../../styles/OrderForm/OrderForm.css';
 
-import OrderFormContainer from '../orders/OrderFormContainer';
+import OrderFormContainer from './OrderFormContainer';
 
 function OrderForm() {
   return (

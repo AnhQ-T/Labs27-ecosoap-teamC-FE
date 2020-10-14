@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, InputNumber } from 'antd';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import '../../styles/OrderForm/OrderForm.css';
@@ -9,6 +10,8 @@ const OrderFormContainer = () => {
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState('horizontal');
   const [, forceUpdate] = useState();
+
+  const { push } = useHistory();
 
   const onFormLayoutChange = ({ layout }) => {
     setFormLayout(layout);
@@ -22,10 +25,11 @@ const OrderFormContainer = () => {
     axios
       .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/', values)
       .then(res => {
-        console.log(res);
+        console.log(res.data);
         form.setFieldsValue(values);
       })
       .catch(err => console.log(`Order form error: ${err}`));
+    push('/checkout');
   };
 
   const formItemLayout = {
