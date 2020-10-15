@@ -1,53 +1,38 @@
 import React, { useState } from 'react';
-import { Modal, Button, Result } from 'antd';
+import { Modal } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 const NoPriceOrder = () => {
-  const [state, setState] = useState({ visible: false });
+  const [state, setState] = useState({ visible: true });
 
-  const showModal = () => {
-    setState({ visible: true });
-  };
+  const { push } = useHistory();
 
   const handleOk = e => {
     console.log(e);
     setState({ visible: false });
+    push('/orders');
   };
 
   const handleCancel = e => {
     console.log(e);
     setState({ visible: false });
+    push('/orders');
   };
+
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
       <Modal
-        title="Basic Modal"
+        title="Success"
         visible={state.visible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
         <h3>Your order has been submitted.</h3>
-        <p>
-          An EcoSoap representative will contact you regarding your order. Thank
-          you.{' '}
-        </p>
+        <p>An EcoSoap representative will contact you regarding your order.</p>
+        <p>Thank you.</p>
       </Modal>
     </>
   );
 };
-// const NoPriceOrder = () => {
-//   return (
-//   <Result
-//     title="Your operation has been executed"
-//     extra={
-//       <Button type="primary" key="console">
-//         Go Console
-//       </Button>
-//     }
-//   />
-//   )
-// }
 
 export default NoPriceOrder;

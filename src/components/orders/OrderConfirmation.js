@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -25,6 +25,8 @@ const OrderConfirmation = props => {
 
   const { push } = useHistory();
 
+  const [showModal, setShowModal] = useState(false);
+
   const confirmOrder = values => {
     console.log(props.location.state.values);
     axios
@@ -40,33 +42,35 @@ const OrderConfirmation = props => {
             data: res.data,
           });
         } else {
-          console.log('message');
-          return <NoPriceOrder />;
+          setShowModal(true);
         }
       })
       .catch(err => console.log(`Order confirmation error: ${err}`));
   };
 
   return (
-    <div className="site-card-border-less-wrapper">
-      <Card title="Order Confirmation">
-        <p>Organization Name: {organizationName}</p>
-        <p>Organization Website: {organizationWebsite}</p>
-        <p>Contact Name: {contactName}</p>
-        <p>Number of Soap Bars Requested: {soapBarNum}</p>
-        <p>Contact Phone: {contactPhone}</p>
-        <p>Contact Email: {contactEmail}</p>
-        <p>Address: {address}</p>
-        <p>Country: {country}</p>
-        <p>Number of Beneficiaries: {beneficiariesNum}</p>
-        <p>Hygiene Situation: {hygieneSituation}</p>
-        <p>Hygiene Initiative: {hygieneInitiative}</p>
-        <p>Comments: {comments}</p>
-        <Button className="btn" type="primary" onClick={() => confirmOrder()}>
-          Confirm Order
-        </Button>
-      </Card>
-    </div>
+    (
+      <div className="site-card-border-less-wrapper">
+        <Card title="Order Confirmation">
+          <p>Organization Name: {organizationName}</p>
+          <p>Organization Website: {organizationWebsite}</p>
+          <p>Contact Name: {contactName}</p>
+          <p>Number of Soap Bars Requested: {soapBarNum}</p>
+          <p>Contact Phone: {contactPhone}</p>
+          <p>Contact Email: {contactEmail}</p>
+          <p>Address: {address}</p>
+          <p>Country: {country}</p>
+          <p>Number of Beneficiaries: {beneficiariesNum}</p>
+          <p>Hygiene Situation: {hygieneSituation}</p>
+          <p>Hygiene Initiative: {hygieneInitiative}</p>
+          <p>Comments: {comments}</p>
+          <Button className="btn" type="primary" onClick={() => confirmOrder()}>
+            Confirm Order
+          </Button>
+        </Card>
+      </div>
+    ),
+    { showModal } ? <NoPriceOrder /> : null
   );
 };
 
