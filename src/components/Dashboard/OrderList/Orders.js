@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import '../../../styles/Dashboard/Orders/OrderList.css';
@@ -13,7 +14,9 @@ function Orders(props) {
       <Card
         type="inner"
         title={<Title level={3}>{props.data.organizationName}</Title>}
-        extra={<a href="#">Order Details</a>}
+        extra={
+          <Link to={`/order_details/${props.data.id}`}>Order Details</Link>
+        }
       >
         <div className="order-content-container">
           <div>

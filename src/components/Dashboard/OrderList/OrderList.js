@@ -13,14 +13,20 @@ function OrderList(props) {
 
   useEffect(() => {
     getBuyerOrders();
-  }, [getBuyerOrders]);
+  }, []);
 
   return (
-    <Card title={props.orders_list.length + ' orders'}>
-      {props.orders_list.map((el, i) => (
-        <Orders data={el} key={i} />
-      ))}
-    </Card>
+    <div>
+      {props.orders_list ? (
+        <Card title={props.orders_list.length + ' orders'}>
+          {props.orders_list.map((el, i) => (
+            <Orders data={el} key={i} />
+          ))}
+        </Card>
+      ) : (
+        <div></div>
+      )}
+    </div>
   );
 }
 
