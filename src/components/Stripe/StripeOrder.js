@@ -7,12 +7,12 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+import { Button } from 'antd';
 import axios from 'axios';
 
 const CheckoutForm = props => {
   const stripe = useStripe();
   const elements = useElements();
-  const [email, setEmail] = useState('tanner@gmail.com');
 
   const {
     organizationName,
@@ -27,7 +27,7 @@ const CheckoutForm = props => {
     hygieneSituation,
     hygieneInitiative,
     comments,
-  } = props;
+  } = props.values.order_details;
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -88,7 +88,7 @@ const CheckoutForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
+      <CardElement options={CARD_OPTIONS} />
       <button type="submit" disabled={!stripe}>
         Pay
       </button>
@@ -100,11 +100,39 @@ const stripePromise = loadStripe(
   'pk_test_51HbTxLIV3JLVItGFEFvVyPjR9WIuHmtin99dZxtDL2BnMcXgeB4GZKCDenDMMxlR9miCaEs5bewVOnRMDgsyIZ1f003SnAbSoV'
 );
 
+const CARD_OPTIONS = {
+  iconStyle: 'solid',
+  style: {
+    base: {
+      iconColor: '#c4f0ff',
+      color: '#000',
+      fontWeight: 500,
+      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+      fontSize: '16px',
+      fontSmoothing: 'antialiased',
+      ':-webkit-autofill': { color: '#fce883' },
+      '::placeholder': { color: '#87bbfd' },
+    },
+    invalid: {
+      iconColor: '#ffc7ee',
+      color: '#ffc7ee',
+    },
+  },
+};
+
+// const CardField = ( { onChange } ) => (
+//   <fieldset className="FormGroup">
+//     <div className="FormRow">
+//       <CardElement options={ CARD_OPTIONS } onChange={ onChange } />
+//     </div>
+//   </fieldset>
+// );
+
 function Stripe(props) {
   console.log(props.location.state.values);
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
-      <h3>Price: 10.99</h3>
+      <h3>Price: ${props.location.state.values.price}</h3>
       <Elements stripe={stripePromise}>
         <CheckoutForm values={props.location.state.values} />
       </Elements>

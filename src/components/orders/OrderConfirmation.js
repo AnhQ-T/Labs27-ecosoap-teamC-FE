@@ -36,11 +36,15 @@ const OrderConfirmation = props => {
       )
       .then(res => {
         console.log(res.data);
+        var price = res.data.checkIfPrice.price;
         if (res.data.checkIfPrice.hasPrice === true) {
           push({
             pathname: '/checkout',
             state: {
-              values: props.location.state.values,
+              values: {
+                order_details: props.location.state.values,
+                price: price,
+              },
             },
           });
         } else {
