@@ -17,7 +17,7 @@ function DashboardContainer(props) {
         <DashboardHeader />
         <Layout className="menu-layout">
           <DashboardMenu userInfo={userInfo} authService={authService} />
-          <DashboardContent />
+          <DashboardContent userInfo={userInfo} authService={authService} />
         </Layout>
       </Layout>
     </div>

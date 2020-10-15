@@ -23,6 +23,7 @@ import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import OrderDetailsContainer from './components/Dashboard/OrderList/OrderDetailsContainer';
 import OrderForm from './components/orders/OrderForm';
 import Stripe from './components/Stripe/StripeOrder';
 import OrderConfirmation from './components/orders/OrderConfirmation';
@@ -57,6 +58,9 @@ function App() {
         <Route path="/orders" component={OrderForm} />
         <Route path="/checkout" component={Stripe} />
         <Route path="/confirmation" component={OrderConfirmation} />
+        <Route path="/order_details/:id">
+          <OrderDetailsContainer />
+        </Route>
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
