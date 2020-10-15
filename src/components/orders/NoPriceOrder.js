@@ -8,13 +8,11 @@ const NoPriceOrder = () => {
   const { push } = useHistory();
 
   const handleOk = e => {
-    console.log(e);
     setState({ visible: false });
     push('/orders');
   };
 
   const handleCancel = e => {
-    console.log(e);
     setState({ visible: false });
     push('/orders');
   };

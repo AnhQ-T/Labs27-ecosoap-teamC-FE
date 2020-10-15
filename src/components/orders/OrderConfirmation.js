@@ -39,7 +39,9 @@ const OrderConfirmation = props => {
         if (res.data.checkIfPrice.hasPrice === true) {
           push({
             pathname: '/checkout',
-            data: res.data,
+            state: {
+              values: props.location.state.values,
+            },
           });
         } else {
           setShowModal(true);
