@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
 import { Card, Button } from 'antd';
 import '../../styles/OrderConfirmation/OrderConfirmation.css';
+import NoPriceOrder from './NoPriceOrder';
 
 const OrderConfirmation = props => {
   const {
@@ -28,8 +29,7 @@ const OrderConfirmation = props => {
     console.log(props.location.state.values);
     axios
       .post(
-        'http://98.242.245.160:8000/orders/qualify',
-        // 'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/qualify',
+        'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/qualify',
         props.location.state.values
       )
       .then(res => {
@@ -41,6 +41,7 @@ const OrderConfirmation = props => {
           });
         } else {
           console.log('message');
+          return <NoPriceOrder />;
         }
       })
       .catch(err => console.log(`Order confirmation error: ${err}`));
@@ -61,7 +62,7 @@ const OrderConfirmation = props => {
         <p>Hygiene Situation: {hygieneSituation}</p>
         <p>Hygiene Initiative: {hygieneInitiative}</p>
         <p>Comments: {comments}</p>
-        <Button type="primary" onClick={() => confirmOrder()}>
+        <Button className="btn" type="primary" onClick={() => confirmOrder()}>
           Confirm Order
         </Button>
       </Card>
