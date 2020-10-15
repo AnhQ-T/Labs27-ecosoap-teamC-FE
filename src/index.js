@@ -58,6 +58,9 @@ function App() {
         <Route path="/orders" component={OrderForm} />
         <Route path="/checkout" component={Stripe} />
         <Route path="/confirmation" component={OrderConfirmation} />
+        <Route path="/order_details/:id">
+          <OrderDetailsContainer />
+        </Route>
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
