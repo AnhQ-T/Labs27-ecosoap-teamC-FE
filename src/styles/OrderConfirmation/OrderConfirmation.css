@@ -1,0 +1,11 @@
+.site-card-border-less-wrapper {
+  width: 60%;
+  margin: 4% auto;
+  padding: 30px;
+  background: #ececec;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+}

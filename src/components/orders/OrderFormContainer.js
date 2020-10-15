@@ -25,11 +25,14 @@ const OrderFormContainer = () => {
     axios
       .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/', values)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         form.setFieldsValue(values);
       })
       .catch(err => console.log(`Order form error: ${err}`));
-    push('/checkout');
+    push({
+      pathname: '/confirmation',
+      state: { values: form.getFieldsValue() },
+    });
   };
 
   const formItemLayout = {
@@ -55,6 +58,10 @@ const OrderFormContainer = () => {
       form={form}
       initialValues={{
         layout: formLayout,
+        organizationWebsite: '',
+        address: '',
+        hygieneSituation: '',
+        comments: '',
       }}
       onValuesChange={onFormLayoutChange}
       onFinish={onFinish}
