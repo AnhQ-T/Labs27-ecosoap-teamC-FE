@@ -67,7 +67,7 @@ const OrderConfirmation = props => {
           Confirm Order
         </Button>
       </Card>
-      {setShowModal ? <NoPriceOrder /> : null}
+      {showModal == true ? <NoPriceOrder /> : null}
     </div>
   );
 };
