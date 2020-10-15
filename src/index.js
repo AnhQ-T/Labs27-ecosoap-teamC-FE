@@ -20,13 +20,12 @@ import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
-import { OrderDetailsContainer } from './components/Dashboard/OrderList/OrderDetailsContainer';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import OrderDetailsContainer from './components/Dashboard/OrderList/OrderDetailsContainer';
 import OrderForm from './components/orders/OrderForm';
 import Stripe from './components/Stripe/StripeOrder';
-import OrderDetails from './components/Dashboard/OrderList/OrderDetails';
 
 ReactDOM.render(
   <Router>
@@ -58,7 +57,7 @@ function App() {
         <Route path="/orders" component={OrderForm} />
         <Route path="/checkout" component={Stripe} />
         <Route path="/order_details/:id">
-          <OrderDetails />
+          <OrderDetailsContainer />
         </Route>
         {/* any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
