@@ -48,13 +48,18 @@ const CheckoutForm = props => {
           // 'http://98.242.245.160:8000/orders/pay',
           {
             id,
-            amount: 1099,
-            quantity: 69,
-            email: 'tannerwill756@gmail.com',
-            // organizationName: 'Henry',
-            // beneficiaries: 1001111,
-            // country: 'USA',
-            // contactName: 'Timmy',
+            organizationName,
+            organizationWebsite,
+            contactName,
+            soapBarNum,
+            contactPhone,
+            contactEmail,
+            address,
+            country,
+            beneficiariesNum,
+            hygieneSituation,
+            hygieneInitiative,
+            comments,
           }
         );
         const clientSecret = res.data['client_secret'];
@@ -62,7 +67,7 @@ const CheckoutForm = props => {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              name: { contactName },
+              name: props.location.state.contactName,
               email: { contactEmail },
             },
           },
@@ -82,15 +87,12 @@ const CheckoutForm = props => {
   };
 
   return (
-    console.log(props),
-    (
-      <form onSubmit={handleSubmit}>
-        <CardElement />
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
-      </form>
-    )
+    <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
+        Pay
+      </button>
+    </form>
   );
 };
 
