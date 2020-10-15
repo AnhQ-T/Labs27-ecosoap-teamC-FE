@@ -16,7 +16,6 @@ const NoPriceOrder = () => {
   const handleCancel = e => {
     console.log(e);
     setState({ visible: false });
-    push('/orders');
   };
 
   return (

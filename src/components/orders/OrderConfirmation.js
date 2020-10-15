@@ -49,28 +49,26 @@ const OrderConfirmation = props => {
   };
 
   return (
-    (
-      <div className="site-card-border-less-wrapper">
-        <Card title="Order Confirmation">
-          <p>Organization Name: {organizationName}</p>
-          <p>Organization Website: {organizationWebsite}</p>
-          <p>Contact Name: {contactName}</p>
-          <p>Number of Soap Bars Requested: {soapBarNum}</p>
-          <p>Contact Phone: {contactPhone}</p>
-          <p>Contact Email: {contactEmail}</p>
-          <p>Address: {address}</p>
-          <p>Country: {country}</p>
-          <p>Number of Beneficiaries: {beneficiariesNum}</p>
-          <p>Hygiene Situation: {hygieneSituation}</p>
-          <p>Hygiene Initiative: {hygieneInitiative}</p>
-          <p>Comments: {comments}</p>
-          <Button className="btn" type="primary" onClick={() => confirmOrder()}>
-            Confirm Order
-          </Button>
-        </Card>
-      </div>
-    ),
-    { showModal } ? <NoPriceOrder /> : null
+    <div className="site-card-border-less-wrapper">
+      <Card title="Order Confirmation">
+        <p>Organization Name: {organizationName}</p>
+        <p>Organization Website: {organizationWebsite}</p>
+        <p>Contact Name: {contactName}</p>
+        <p>Number of Soap Bars Requested: {soapBarNum}</p>
+        <p>Contact Phone: {contactPhone}</p>
+        <p>Contact Email: {contactEmail}</p>
+        <p>Address: {address}</p>
+        <p>Country: {country}</p>
+        <p>Number of Beneficiaries: {beneficiariesNum}</p>
+        <p>Hygiene Situation: {hygieneSituation}</p>
+        <p>Hygiene Initiative: {hygieneInitiative}</p>
+        <p>Comments: {comments}</p>
+        <Button className="btn" type="primary" onClick={() => confirmOrder()}>
+          Confirm Order
+        </Button>
+      </Card>
+      {setShowModal ? <NoPriceOrder /> : null}
+    </div>
   );
 };
 
