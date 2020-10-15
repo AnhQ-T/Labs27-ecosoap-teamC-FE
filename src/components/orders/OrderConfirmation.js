@@ -48,7 +48,7 @@ const OrderConfirmation = props => {
 
   return (
     <div className="site-card-border-less-wrapper">
-      <Card title="Order Confirmation" bordered={false}>
+      <Card title="Order Confirmation">
         <p>Organization Name: {organizationName}</p>
         <p>Organization Website: {organizationWebsite}</p>
         <p>Contact Name: {contactName}</p>
