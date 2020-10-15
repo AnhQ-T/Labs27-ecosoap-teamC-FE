@@ -4,14 +4,27 @@ import 'antd/dist/antd.css';
 import '../../../styles/Dashboard/DashboardContent.css';
 import { Layout } from 'antd';
 
+import '../../../styles/Dashboard/DashboardLayout.css';
+
+import DashboardHeader from '../Header/DashboardHeader';
+import DashboardMenu from '../DashboardMenu';
 import OrderDetails from './OrderDetails';
 
-function OrderDetailsContainer() {
+function OrderDetailsContainer(props) {
+  const { userInfo, authService } = props;
+
   return (
     <div>
-      <Layout className="content-layout">
-        <h2>Order Details</h2>
-        <OrderDetails />
+      <Layout className="dashboard-layout">
+        <DashboardHeader />
+        <Layout className="menu-layout">
+          <DashboardMenu userInfo={userInfo} authService={authService} />
+          <div>
+            <Layout className="content-layout">
+              <OrderDetails />
+            </Layout>
+          </div>
+        </Layout>
       </Layout>
     </div>
   );
