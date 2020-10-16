@@ -31,7 +31,6 @@ const CheckoutForm = props => {
     comments,
   } = props.values.order_details;
 
-  console.log(props.values.priceInfo.qid);
   const qID = props.values.priceInfo.qid;
 
   const handleSubmit = async event => {
@@ -140,7 +139,7 @@ function Stripe(props) {
 
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
-      <h3>Price: ${props.location.state.values.priceInfo.price}</h3>
+      <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
       <Elements stripe={stripePromise}>
         <CheckoutForm
           values={props.location.state.values}

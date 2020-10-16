@@ -27,13 +27,13 @@ const OrderReceipt = props => {
         cancelButtonProps={{ style: { display: 'none' } }}
       >
         <h3>Thank you for your order!</h3>
-        <h4>Your total is: ${props.price}</h4>
+        <h4>Your total is: ${props.price / 100}.</h4>
         <p>
           A receipt will be sent to {props.details.order_details.contactEmail}
         </p>
         <p>
           Please contact us at customerservice@soap.com if you have any
-          questions about your order
+          questions about your order.
         </p>
       </Modal>
     </>
