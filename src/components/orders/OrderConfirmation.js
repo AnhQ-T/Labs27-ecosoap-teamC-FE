@@ -37,6 +37,7 @@ const OrderConfirmation = props => {
       .then(res => {
         console.log(res.data);
         var price = res.data.checkIfPrice.price;
+        var qid = res.data.checkIfPrice.qID;
         if (res.data.checkIfPrice.hasPrice === true) {
           push({
             pathname: '/checkout',
@@ -44,6 +45,7 @@ const OrderConfirmation = props => {
               values: {
                 order_details: props.location.state.values,
                 price: price,
+                qid: qid,
               },
             },
           });

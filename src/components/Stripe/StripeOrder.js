@@ -7,7 +7,6 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { Button } from 'antd';
 import axios from 'axios';
 
 const CheckoutForm = props => {
@@ -45,7 +44,6 @@ const CheckoutForm = props => {
       try {
         const res = await axios.post(
           'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/pay',
-          // 'http://98.242.245.160:8000/orders/pay',
           {
             id,
             organizationName,
@@ -67,8 +65,10 @@ const CheckoutForm = props => {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              name: props.location.state.contactName,
-              email: { contactEmail },
+              name: contactName,
+              email: contactEmail,
+              address: address,
+              phone: contactPhone,
             },
           },
         });
