@@ -36,13 +36,24 @@ const OrderConfirmation = props => {
       )
       .then(res => {
         console.log(res.data);
-        if (res.data.checkIfPrice.hasPrice === true) {
+        var price = res.data.price;
+        var qid = res.data.qID;
+
+        if (res.data.qualificationStatus) {
+          setShowModal(true);
+        } else {
           push({
             pathname: '/checkout',
-            data: res.data,
+            state: {
+              values: {
+                order_details: props.location.state.values,
+                priceInfo: {
+                  price: price,
+                  qid: qid,
+                },
+              },
+            },
           });
-        } else {
-          setShowModal(true);
         }
       })
       .catch(err => console.log(`Order confirmation error: ${err}`));

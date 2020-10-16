@@ -9,13 +9,31 @@ import {
 } from '@stripe/react-stripe-js';
 import axios from 'axios';
 
-const CheckoutForm = () => {
+const CheckoutForm = props => {
   const stripe = useStripe();
   const elements = useElements();
-  const [email, setEmail] = useState('tanner@gmail.com');
+
+  const {
+    organizationName,
+    organizationWebsite,
+    contactName,
+    soapBarNum,
+    contactPhone,
+    contactEmail,
+    address,
+    country,
+    beneficiariesNum,
+    hygieneSituation,
+    hygieneInitiative,
+    comments,
+  } = props.values.order_details;
+
+  console.log(props.values.priceInfo.qid);
+  const qID = props.values.priceInfo.qid;
 
   const handleSubmit = async event => {
     event.preventDefault();
+    console.log(props);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
@@ -27,18 +45,34 @@ const CheckoutForm = () => {
       const { id } = paymentMethod;
 
       try {
-        const res = await axios.post('http://98.242.245.160:8000/orders/pay', {
-          id,
-          amount: 1099,
-          quantity: 69,
-          email: 'tannerwill756@gmail.com',
-        });
+        const res = await axios.post(
+          'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/pay',
+          {
+            qID,
+            id,
+            organizationName,
+            organizationWebsite,
+            contactName,
+            soapBarNum,
+            contactPhone,
+            contactEmail,
+            address,
+            country,
+            beneficiariesNum,
+            hygieneSituation,
+            hygieneInitiative,
+            comments,
+          }
+        );
         const clientSecret = res.data['client_secret'];
         const result = await stripe.confirmCardPayment(clientSecret, {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              email: email,
+              name: contactName,
+              email: contactEmail,
+              address: address,
+              phone: contactPhone,
             },
           },
         });
@@ -58,7 +92,7 @@ const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
+      <CardElement options={CARD_OPTIONS} />
       <button type="submit" disabled={!stripe}>
         Pay
       </button>
@@ -66,16 +100,45 @@ const CheckoutForm = () => {
   );
 };
 
-const stripPromise = loadStripe(
+const stripePromise = loadStripe(
   'pk_test_51HbTxLIV3JLVItGFEFvVyPjR9WIuHmtin99dZxtDL2BnMcXgeB4GZKCDenDMMxlR9miCaEs5bewVOnRMDgsyIZ1f003SnAbSoV'
 );
 
-function Stripe() {
+const CARD_OPTIONS = {
+  iconStyle: 'solid',
+  style: {
+    base: {
+      iconColor: '#c4f0ff',
+      color: '#000',
+      fontWeight: 500,
+      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+      fontSize: '16px',
+      fontSmoothing: 'antialiased',
+      ':-webkit-autofill': { color: '#fce883' },
+      '::placeholder': { color: '#87bbfd' },
+    },
+    invalid: {
+      iconColor: '#ffc7ee',
+      color: '#ffc7ee',
+    },
+  },
+};
+
+// const CardField = ( { onChange } ) => (
+//   <fieldset className="FormGroup">
+//     <div className="FormRow">
+//       <CardElement options={ CARD_OPTIONS } onChange={ onChange } />
+//     </div>
+//   </fieldset>
+// );
+
+function Stripe(props) {
+  console.log(props.location.state.values);
   return (
-    <div className="App" style={{ maxWidth: '400px', margin: '0 auto' }}>
-      <h3>Price: 10.99</h3>
-      <Elements stripe={stripPromise}>
-        <CheckoutForm />
+    <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
+      <h3>Price: ${props.location.state.values.priceInfo.price}</h3>
+      <Elements stripe={stripePromise}>
+        <CheckoutForm values={props.location.state.values} />
       </Elements>
     </div>
   );
