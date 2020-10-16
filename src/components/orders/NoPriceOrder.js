@@ -14,7 +14,6 @@ const NoPriceOrder = () => {
 
   const handleCancel = e => {
     setState({ visible: false });
-    push('/orders');
   };
 
   return (
@@ -24,6 +23,7 @@ const NoPriceOrder = () => {
         visible={state.visible}
         onOk={handleOk}
         onCancel={handleCancel}
+        cancelButtonProps={{ style: { display: 'none' } }}
       >
         <h3>Your order has been submitted.</h3>
         <p>An EcoSoap representative will contact you regarding your order.</p>
