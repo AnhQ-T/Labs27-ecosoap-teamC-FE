@@ -2,7 +2,24 @@ import { buyer } from '../actions/index.js';
 
 const initialState = {
   orders_list: [],
-  current_order: {},
+  current_order: {
+    address: '',
+    beneficiariesNum: '',
+    buyerId: '',
+    comments: '',
+    contactEmail: '',
+    contactName: '',
+    contactPhone: '',
+    country: '',
+    created_at: '',
+    hygieneInitiative: '',
+    hygieneSituation: '',
+    id: '',
+    organizationName: '',
+    organizationWebsite: '',
+    soapBarNum: '',
+    updated_at: '',
+  },
   isFetching: false,
 };
 

@@ -7,6 +7,9 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+
+import OrderReceipt from './OrderReceipt';
+
 import axios from 'axios';
 
 const CheckoutForm = props => {
@@ -74,6 +77,7 @@ const CheckoutForm = props => {
             },
           },
         });
+        props.success(true);
 
         if (result.error) {
           console.log(result.error.message);
@@ -131,13 +135,23 @@ const CARD_OPTIONS = {
 // );
 
 function Stripe(props) {
-  console.log(props.location.state.values);
+  const [orderSuccess, setOrderSuccess] = useState(false);
+
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
       <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
       <Elements stripe={stripePromise}>
-        <CheckoutForm values={props.location.state.values} />
+        <CheckoutForm
+          values={props.location.state.values}
+          success={setOrderSuccess}
+        />
       </Elements>
+      {orderSuccess == true ? (
+        <OrderReceipt
+          details={props.location.state.values}
+          price={props.location.state.values.priceInfo.price}
+        />
+      ) : null}
     </div>
   );
 }
