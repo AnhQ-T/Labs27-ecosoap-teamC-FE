@@ -28,6 +28,9 @@ const CheckoutForm = props => {
     comments,
   } = props.values.order_details;
 
+  console.log(props.values.priceInfo.qid);
+  const qID = props.values.priceInfo.qid;
+
   const handleSubmit = async event => {
     event.preventDefault();
     console.log(props);
@@ -45,6 +48,7 @@ const CheckoutForm = props => {
         const res = await axios.post(
           'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/pay',
           {
+            qID,
             id,
             organizationName,
             organizationWebsite,
@@ -132,7 +136,7 @@ function Stripe(props) {
   console.log(props.location.state.values);
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
-      <h3>Price: ${props.location.state.values.price}</h3>
+      <h3>Price: ${props.location.state.values.priceInfo.price}</h3>
       <Elements stripe={stripePromise}>
         <CheckoutForm values={props.location.state.values} />
       </Elements>
