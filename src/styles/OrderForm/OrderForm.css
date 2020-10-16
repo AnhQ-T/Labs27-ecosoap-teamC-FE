@@ -6,7 +6,14 @@ h1 {
 .orderBtn {
   display: block;
   margin: 0 auto;
+  background: #3BB54A;
+  border: none;
 }
+
+.orderBtn:hover{
+  background: #2E8AF7
+}
+
 
 .orderInput {
   width: 80%;

@@ -8,4 +8,10 @@
 .btn {
   display: block;
   margin: 0 auto;
+  background: #3bb54a;
+  border: none;
+}
+
+.btn:hover{
+  background: #2E8AF7
 }
