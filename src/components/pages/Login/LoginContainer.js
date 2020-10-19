@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
+import ecosoapLogo from '../../../assets/ecosoapLogo.png';
+
 import { config } from '../../../utils/oktaConfig';
 
 const LoginContainer = () => {
@@ -17,11 +19,11 @@ const LoginContainer = () => {
       },
       features: { registration: false },
       // turning this feature on allows your widget to use Okta for user registration
-      logo: 'path-to-your-logo',
+      logo: ecosoapLogo,
       // add your custom logo to your signing/register widget here.
       i18n: {
         en: {
-          'primaryauth.title': 'Welcome to Labs Basic SPA Please sign in',
+          'primaryauth.title': 'Welcome to EcoSoap Please sign in',
           // change title for your app
         },
       },
