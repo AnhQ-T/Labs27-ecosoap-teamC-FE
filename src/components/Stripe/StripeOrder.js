@@ -8,6 +8,8 @@ import {
   useElements,
 } from '@stripe/react-stripe-js';
 
+import '../../styles/StripeCheckout/StripeOrder.css';
+
 import OrderReceipt from './OrderReceipt';
 
 import axios from 'axios';
@@ -94,8 +96,8 @@ const CheckoutForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement options={CARD_OPTIONS} />
-      <button type="submit" disabled={!stripe}>
+      <CardElement options={CARD_OPTIONS} className="stripeCard" />
+      <button type="submit" disabled={!stripe} className="btn">
         Pay
       </button>
     </form>
@@ -116,8 +118,8 @@ const CARD_OPTIONS = {
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
-      ':-webkit-autofill': { color: '#fce883' },
-      '::placeholder': { color: '#87bbfd' },
+      ':-webkit-autofill': { color: '#2F559C' },
+      '::placeholder': { color: '#b0c4e8' },
     },
     invalid: {
       iconColor: '#ffc7ee',
@@ -139,6 +141,7 @@ function Stripe(props) {
 
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
+      <h1>EcoSoap Checkout</h1>
       <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
       <Elements stripe={stripePromise}>
         <CheckoutForm
