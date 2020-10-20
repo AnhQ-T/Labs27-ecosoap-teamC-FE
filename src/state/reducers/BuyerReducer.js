@@ -21,6 +21,7 @@ const initialState = {
     updated_at: '',
   },
   isFetching: false,
+  isLoggedIn: false,
 };
 
 export const reducer = (state = initialState, action) => {

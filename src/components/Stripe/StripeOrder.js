@@ -9,6 +9,10 @@ import {
 } from '@stripe/react-stripe-js';
 
 import '../../styles/StripeCheckout/StripeOrder.css';
+import '../../styles/OrderForm/OrderForm.css';
+import '../../styles/EcoSoapLogo/EcoSoapLogo.css';
+
+import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
 import OrderReceipt from './OrderReceipt';
 
@@ -133,6 +137,7 @@ function Stripe(props) {
 
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
+      <img src={ecosoapLogo} />
       <h1>Eco-Soap Bank Checkout</h1>
       <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
       <Elements stripe={stripePromise}>

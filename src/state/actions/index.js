@@ -5,5 +5,6 @@
 // Declare action TYPES at the top of the file
 
 import * as buyer from './BuyerAction';
+import * as admin from './AdminAction';
 
-export { buyer };
+export { buyer, admin };
