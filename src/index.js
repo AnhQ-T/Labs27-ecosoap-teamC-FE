@@ -24,7 +24,8 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import OrderDetailsContainer from './components/Dashboard/OrderList/OrderDetailsContainer';
-import OrderForm from './components/orders/OrderForm';
+import BuyerOrderForm from './components/orders/BuyerOrderForm';
+import GuestOrderForm from './components/orders/GuestOrderForm';
 import Stripe from './components/Stripe/StripeOrder';
 import OrderConfirmation from './components/orders/OrderConfirmation';
 
@@ -55,7 +56,8 @@ function App() {
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/orders" component={OrderForm} />
+        <Route path="/orders" component={GuestOrderForm} />
+        <Route path="/order" component={BuyerOrderForm} />
         <Route path="/checkout" component={Stripe} />
         <Route path="/confirmation" component={OrderConfirmation} />
         <Route path="/order_details/:id">
