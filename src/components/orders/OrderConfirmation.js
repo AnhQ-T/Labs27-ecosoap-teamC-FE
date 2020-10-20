@@ -5,7 +5,10 @@ import { useHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import { Card, Button } from 'antd';
 import '../../styles/OrderConfirmation/OrderConfirmation.css';
+import '../../styles/EcoSoapLogo/EcoSoapLogo.css';
 import NoPriceOrder from './NoPriceOrder';
+
+import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
 const OrderConfirmation = props => {
   const {
@@ -60,26 +63,29 @@ const OrderConfirmation = props => {
   };
 
   return (
-    <div className="site-card-border-less-wrapper">
-      <Card title="Order Confirmation">
-        <p>Organization Name: {organizationName}</p>
-        <p>Organization Website: {organizationWebsite}</p>
-        <p>Contact Name: {contactName}</p>
-        <p>Number of Soap Bars Requested: {soapBarNum}</p>
-        <p>Contact Phone: {contactPhone}</p>
-        <p>Contact Email: {contactEmail}</p>
-        <p>Address: {address}</p>
-        <p>Country: {country}</p>
-        <p>Number of Beneficiaries: {beneficiariesNum}</p>
-        <p>Hygiene Situation: {hygieneSituation}</p>
-        <p>Hygiene Initiative: {hygieneInitiative}</p>
-        <p>Comments: {comments}</p>
-        <Button className="btn" type="primary" onClick={() => confirmOrder()}>
-          Confirm Order
-        </Button>
-      </Card>
-      {showModal == true ? <NoPriceOrder /> : null}
-    </div>
+    <>
+      <img src={ecosoapLogo} />
+      <div className="site-card-border-less-wrapper">
+        <Card title="Order Confirmation">
+          <p>Organization Name: {organizationName}</p>
+          <p>Organization Website: {organizationWebsite}</p>
+          <p>Contact Name: {contactName}</p>
+          <p>Number of Soap Bars Requested: {soapBarNum}</p>
+          <p>Contact Phone: {contactPhone}</p>
+          <p>Contact Email: {contactEmail}</p>
+          <p>Address: {address}</p>
+          <p>Country: {country}</p>
+          <p>Number of Beneficiaries: {beneficiariesNum}</p>
+          <p>Hygiene Situation: {hygieneSituation}</p>
+          <p>Hygiene Initiative: {hygieneInitiative}</p>
+          <p>Comments: {comments}</p>
+          <Button className="btn" type="primary" onClick={() => confirmOrder()}>
+            Confirm Order
+          </Button>
+        </Card>
+        {showModal == true ? <NoPriceOrder /> : null}
+      </div>
+    </>
   );
 };
 

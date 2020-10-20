@@ -9,6 +9,10 @@ import {
 } from '@stripe/react-stripe-js';
 
 import '../../styles/StripeCheckout/StripeOrder.css';
+import '../../styles/OrderForm/OrderForm.css';
+import '../../styles/EcoSoapLogo/EcoSoapLogo.css';
+
+import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
 import OrderReceipt from './OrderReceipt';
 
@@ -128,20 +132,13 @@ const CARD_OPTIONS = {
   },
 };
 
-// const CardField = ( { onChange } ) => (
-//   <fieldset className="FormGroup">
-//     <div className="FormRow">
-//       <CardElement options={ CARD_OPTIONS } onChange={ onChange } />
-//     </div>
-//   </fieldset>
-// );
-
 function Stripe(props) {
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   return (
     <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
-      <h1>EcoSoap Checkout</h1>
+      <img src={ecosoapLogo} />
+      <h1>Eco-Soap Bank Checkout</h1>
       <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
       <Elements stripe={stripePromise}>
         <CheckoutForm
