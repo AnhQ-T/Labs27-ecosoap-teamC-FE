@@ -12,6 +12,8 @@ import '../../../styles/Login/LoginForm.css';
 const AdminLogin = props => {
   const history = useHistory();
 
+  const { adminLogin } = props;
+
   useEffect(() => {
     if (localStorage.getItem('token')) {
       history.push({
@@ -19,8 +21,6 @@ const AdminLogin = props => {
       });
     }
   }, [props.isLoggedIn]);
-
-  const { adminLogin } = props;
 
   const onFinish = values => {
     console.log('running');

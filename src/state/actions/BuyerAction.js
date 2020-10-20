@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 export const BUYER_LOGIN = 'BUYER_LOGIN';
 export const BUYER_LOGIN_SUCCESS = 'BUYER_LOGIN_SUCCESS';
@@ -14,9 +14,56 @@ export const GET_BUYER_ORDERS_ERROR = 'GET_BUYER_ORDERS_ERROR';
 export const GET_BUYER_ORDER_DETAILS = 'GET_BUYER_ORDER_DETAILS';
 export const GET_BUYER_ORDER_DETAILS_ERROR = 'GET_BUYER_ORDER_DETAILS_ERROR';
 
+export const buyerLogin = credentials => dispatch => {
+  console.log(credentials);
+  axiosWithAuth()
+    .post(
+      'https://labs27-ecosoap-teamc-api.herokuapp.com/auth/buyer/login',
+      credentials
+    )
+    .then(res => {
+      console.log(res);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('buyer_id', res.data.buyer_id);
+      dispatch({
+        type: BUYER_LOGIN_SUCCESS,
+        payload: res,
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: BUYER_LOGIN_FAILURE,
+        payload: err,
+      });
+    });
+};
+
+export const buyerRegister = credentials => dispatch => {
+  axiosWithAuth()
+    .post(
+      'https://labs27-ecosoap-teamc-api.herokuapp.com/auth/buyer/register',
+      credentials
+    )
+    .then(res => {
+      console.log(res);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('buyer_id', res.data.buyer_id);
+      dispatch({
+        type: BUYER_REGISTER_SUCCESS,
+        payload: res,
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: BUYER_REGISTER_FAILURE,
+        payload: err,
+      });
+    });
+};
+
 export const getBuyerOrders = () => async dispatch => {
   try {
-    const res = await axios.get(
+    const res = await axiosWithAuth().get(
       'https://labs27-ecosoap-teamc-api.herokuapp.com/orders'
     );
     dispatch({
@@ -33,7 +80,7 @@ export const getBuyerOrders = () => async dispatch => {
 
 export const getBuyerOrderDetails = id => async dispatch => {
   try {
-    const res = await axios.get(
+    const res = await axiosWithAuth().get(
       `https://labs27-ecosoap-teamc-api.herokuapp.com/orders/${id}`
     );
     dispatch({
@@ -53,7 +100,7 @@ export const POST_BUYER_ORDERS_ERROR = 'POST_BUYER_ORDERS_ERROR';
 
 export const postBuyerOrders = () => async dispatch => {
   try {
-    const res = await axios.post(
+    const res = await axiosWithAuth().post(
       'https://labs27-ecosoap-teamc-api.herokuapp.com/orders'
     );
     dispatch({
