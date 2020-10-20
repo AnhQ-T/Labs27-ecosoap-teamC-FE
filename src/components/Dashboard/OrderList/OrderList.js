@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getBuyerOrders } from '../../../state/actions/BuyerAction';
+import {
+  getBuyerOrders,
+  getBuyerProfile,
+} from '../../../state/actions/BuyerAction';
+import { getAllOrders } from '../../../state/actions/AdminAction';
 
 import 'antd/dist/antd.css';
 import { Card } from 'antd';
@@ -9,22 +13,37 @@ import { Card } from 'antd';
 import Orders from './Orders';
 
 function OrderList(props) {
-  const { getBuyerOrders } = props;
+  console.log(props);
 
+  const [isBuyer, setIsBuyer] = useState(false);
+
+  const { getBuyerOrders, getBuyerProfile, getAllOrders } = props;
   useEffect(() => {
-    getBuyerOrders();
+    if (localStorage.getItem('buyer_id')) {
+      getBuyerProfile();
+      getBuyerOrders();
+      setIsBuyer(true);
+    } else {
+      getAllOrders();
+    }
   }, []);
+
+  console.log(props);
 
   return (
     <div>
-      {props.orders_list ? (
-        <Card title={props.orders_list.length + ' orders'}>
-          {props.orders_list.map((el, i) => (
+      {isBuyer ? (
+        <Card title={props.buyer_orders_list.length + ' orders'}>
+          {props.buyer_orders_list.map((el, i) => (
             <Orders data={el} key={i} />
           ))}
         </Card>
       ) : (
-        <div></div>
+        <Card title={props.all_orders_list.length + ' orders'}>
+          {props.all_orders_list.map((el, i) => (
+            <Orders data={el} key={i} />
+          ))}
+        </Card>
       )}
     </div>
   );
@@ -32,8 +51,13 @@ function OrderList(props) {
 
 const mapStateToProps = state => {
   return {
-    orders_list: state.buyer.orders_list,
+    buyer_orders_list: state.buyer.orders_list,
+    all_orders_list: state.admin.orders_list,
   };
 };
 
-export default connect(mapStateToProps, { getBuyerOrders })(OrderList);
+export default connect(mapStateToProps, {
+  getBuyerOrders,
+  getBuyerProfile,
+  getAllOrders,
+})(OrderList);
