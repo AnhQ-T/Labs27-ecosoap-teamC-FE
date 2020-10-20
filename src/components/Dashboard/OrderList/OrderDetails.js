@@ -61,7 +61,7 @@ function OrderDetails(props) {
               <h3>
                 Number of Beneficiaries: {props.current_order.beneficiariesNum}
               </h3>
-              <h3>Comments: {props.current_order.beneficiariesNum}</h3>
+              <h3>Comments: {props.current_order.comments}</h3>
             </div>
           </Card>
         </div>
