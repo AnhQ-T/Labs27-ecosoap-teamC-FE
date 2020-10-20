@@ -31,8 +31,28 @@ const OrderForm = props => {
   }, []);
 
   const onFinish = values => {
+    var buyerId = localStorage.getItem('buyer_id');
+    var form_values = {
+      buyerId: buyerId,
+      organizationName: values.organizationName,
+      organizationWebsite: values.organizationWebsite,
+      contactName: values.contactName,
+      soapBarNum: values.soapBarNum,
+      contactPhone: values.contactPhone,
+      contactEmail: values.contactEmail,
+      address: values.address,
+      country: values.country,
+      beneficiariesNum: values.beneficiariesNum,
+      hygieneSituation: values.hygieneSituation,
+      hygieneInitiative: values.hygieneInitiative,
+      comments: values.comments,
+    };
+
     axios
-      .post('https://labs27-ecosoap-teamc-api.herokuapp.com/orders/', values)
+      .post(
+        'https://labs27-ecosoap-teamc-api.herokuapp.com/orders/',
+        form_values
+      )
       .then(res => {
         console.log(res.data);
         form.setFieldsValue(values);
