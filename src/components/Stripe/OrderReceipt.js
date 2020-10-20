@@ -32,8 +32,8 @@ const OrderReceipt = props => {
           A receipt will be sent to {props.details.order_details.contactEmail}
         </p>
         <p>
-          Please contact us at customerservice@soap.com if you have any
-          questions about your order.
+          Please contact us at contact@ecosoapbank.org if you have any questions
+          about your order.
         </p>
       </Modal>
     </>

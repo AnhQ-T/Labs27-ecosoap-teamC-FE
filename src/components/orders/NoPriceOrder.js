@@ -26,7 +26,10 @@ const NoPriceOrder = () => {
         cancelButtonProps={{ style: { display: 'none' } }}
       >
         <h3>Your order has been submitted.</h3>
-        <p>An EcoSoap representative will contact you regarding your order.</p>
+        <p>
+          Please follow up with an EcoSoap representative at
+          contact@ecosoapbank.org regarding the price for your order.
+        </p>
         <p>Thank you.</p>
       </Modal>
     </>
