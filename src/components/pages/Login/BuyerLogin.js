@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useHistory, Link, Redirect } from 'react-router-dom';
 
+import { buyerLogin } from '../../../state/actions/BuyerAction';
+
 import '../../../styles/Login/LoginForm.css';
 
-const BuyerLogin = () => {
+const BuyerLogin = props => {
   const history = useHistory();
+
+  const { buyerLogin } = props;
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -14,10 +19,11 @@ const BuyerLogin = () => {
         pathname: '/dashboard',
       });
     }
-  }, []);
+  }, [props.isLoggedIn]);
 
   const onFinish = values => {
-    console.log('Received values of form: ', values);
+    console.log('running');
+    buyerLogin(values);
   };
 
   return (
@@ -35,7 +41,7 @@ const BuyerLogin = () => {
         onFinish={onFinish}
       >
         <Form.Item
-          name="username"
+          name="email"
           rules={[
             {
               required: true,
@@ -63,11 +69,6 @@ const BuyerLogin = () => {
             placeholder="Password"
           />
         </Form.Item>
-        <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-        </Form.Item>
 
         <Form.Item>
           <Button
@@ -84,4 +85,10 @@ const BuyerLogin = () => {
   );
 };
 
-export default BuyerLogin;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state,
+  };
+};
+
+export default connect(mapStateToProps, { buyerLogin })(BuyerLogin);
