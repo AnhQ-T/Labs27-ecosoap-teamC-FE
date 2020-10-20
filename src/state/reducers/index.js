@@ -4,9 +4,11 @@
 import { combineReducers } from 'redux';
 
 import { reducer as buyer } from './BuyerReducer';
+import { reducer as admin } from './AdminReducer';
 
 const rootReducer = combineReducers({
   buyer,
+  admin,
 });
 
 export default rootReducer;

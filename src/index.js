@@ -15,10 +15,18 @@ import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 
 import 'antd/dist/antd.less';
 
+import PrivateRoute from './utils/privateRoute';
+
 import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
+import BuyerLogin from './components/pages/Login/BuyerLogin.js';
+import AdminLogin from './components/pages/Login/AdminLogin.js';
+import BuyerRegistration from './components/pages/Register/BuyerRegister';
+import AdminRegistration from './components/pages/Register/AdminRegister';
+
+import Dashboard from './components/Dashboard/Dashboard';
 import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
@@ -53,7 +61,10 @@ function App() {
   return (
     <Security {...config} onAuthRequired={authHandler}>
       <Switch>
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={BuyerLogin} />
+        <Route path="/register" component={BuyerRegistration} />
+        <Route exact path="/admin" component={AdminLogin} />
+        <Route exact path="/admin/register" component={AdminRegistration} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/orders" component={OrderForm} />
         <Route path="/checkout" component={Stripe} />
@@ -62,6 +73,7 @@ function App() {
           <OrderDetailsContainer />
         </Route>
         {/* any of the routes you need secured should be registered as SecureRoutes */}
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <SecureRoute
           path="/"
           exact
