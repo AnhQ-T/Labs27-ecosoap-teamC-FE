@@ -32,18 +32,23 @@ function OrderList(props) {
 
   return (
     <div>
-      {isBuyer ? (
-        <Card title={props.buyer_orders_list.length + ' orders'}>
-          {props.buyer_orders_list.map((el, i) => (
+      {props.buyer_orders_list.buyer ? (
+        <Card title={props.buyer_orders_list.buyer.length + ' orders'}>
+          {props.buyer_orders_list.buyer.map((el, i) => (
             <Orders data={el} key={i} />
           ))}
         </Card>
       ) : (
+        <div></div>
+      )}
+      {isBuyer == false ? (
         <Card title={props.all_orders_list.length + ' orders'}>
           {props.all_orders_list.map((el, i) => (
             <Orders data={el} key={i} />
           ))}
         </Card>
+      ) : (
+        <div></div>
       )}
     </div>
   );

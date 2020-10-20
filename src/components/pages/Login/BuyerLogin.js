@@ -45,13 +45,13 @@ const BuyerLogin = props => {
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: 'Please input your Email!',
             },
           ]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="Email"
           />
         </Form.Item>
         <Form.Item
@@ -81,6 +81,7 @@ const BuyerLogin = props => {
           Or <a href="/register">register now!</a>
         </Form.Item>
       </Form>
+      <a href="/guest">Guest Checkout</a>
     </div>
   );
 };

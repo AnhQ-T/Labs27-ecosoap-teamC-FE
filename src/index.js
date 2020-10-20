@@ -67,8 +67,8 @@ function App() {
         <Route exact path="/admin" component={AdminLogin} />
         <Route exact path="/admin/register" component={AdminRegistration} />
         <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/orders" component={GuestOrderForm} />
-        <Route path="/order" component={BuyerOrderForm} />
+        <Route path="/orders" component={BuyerOrderForm} />
+        <Route path="/guest" component={GuestOrderForm} />
         <Route path="/checkout" component={Stripe} />
         <Route path="/confirmation" component={OrderConfirmation} />
         <Route path="/order_details/:id">
