@@ -1,0 +1,19 @@
+.btn {
+  display: block;
+  margin: 0 auto;
+  background: #3bb54a;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  padding: 1% 2%;
+}
+
+.btn:hover {
+  background: #2e8af7;
+  cursor: pointer;
+}
+
+.stripeCard {
+  margin: 2%;
+  margin-bottom: 6%;
+}
