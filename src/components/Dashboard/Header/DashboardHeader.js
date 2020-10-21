@@ -9,7 +9,7 @@ const { Header } = Layout;
 
 function DashboardHeader() {
   return (
-    <div>
+    <div className="headerContainer">
       <Header className="header">
         <Button
           href="/dashboard"
@@ -49,8 +49,7 @@ function DashboardHeader() {
           style={{ backgroundColor: '#49129C' }}
           type="button"
         >
-          Request <br />
-          Soap
+          Request Soap
         </Button>
       </Header>
     </div>
