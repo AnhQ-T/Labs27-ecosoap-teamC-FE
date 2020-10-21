@@ -1,52 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Form,
-  Input,
-  Tooltip,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-} from 'antd';
+import { Form, Input, Button, AutoComplete } from 'antd';
 
 import { connect } from 'react-redux';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { buyerRegister } from '../../../state/actions/BuyerAction';
 
 import '../../../styles/Register/RegistrationForm.css';
+import DashboardHeader from '../../Dashboard/Header/DashboardHeader';
+
+import ecosoapLogo from '../../../assets/ecosoapLogo.png';
 
 const formItemLayout = {
   labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 8,
-    },
+    span: 8,
   },
   wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
+    span: 14,
   },
 };
+
 const tailFormItemLayout = {
   wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
+    span: 14,
+    offset: 5,
   },
 };
 
@@ -96,176 +73,180 @@ const BuyerRegistration = props => {
     value: website,
   }));
   return (
-    <div className="form-container">
-      <Form
-        {...formItemLayout}
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        scrollToFirstError
-      >
-        <Form.Item
-          name="contactName"
-          label="Name"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your name!',
-            },
-          ]}
-          hasFeedback
+    <>
+      {/* <DashboardHeader /> */}
+      <img src={ecosoapLogo} />
+      <h1>Buyer Registration</h1>
+      <div className="form-container">
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          scrollToFirstError
         >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="organizationName"
-          label="Organization Name"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your organization name!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="organizationWebsite"
-          label="Website"
-          rules={[
-            {
-              required: true,
-              message: 'Please input website!',
-            },
-          ]}
-        >
-          <AutoComplete
-            options={websiteOptions}
-            onChange={onWebsiteChange}
-            placeholder="website"
-          >
-            <Input />
-          </AutoComplete>
-        </Form.Item>
-
-        <Form.Item
-          name="email"
-          label="E-mail"
-          rules={[
-            {
-              type: 'email',
-              message: 'The input is not valid E-mail!',
-            },
-            {
-              required: true,
-              message: 'Please input your E-mail!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="contactPhone"
-          label="Phone Number"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your phone number!',
-            },
-          ]}
-        >
-          <Input
-            style={{
-              width: '100%',
-            }}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="address"
-          label="Address"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your address!',
-            },
-          ]}
-        >
-          <Input
-            style={{
-              width: '100%',
-            }}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="country"
-          label="Country"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your country!',
-            },
-          ]}
-        >
-          <Input
-            style={{
-              width: '100%',
-            }}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={['password']}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Please confirm your password!',
-            },
-            ({ getFieldValue }) => ({
-              validator(rule, value) {
-                if (!value || getFieldValue('password') === value) {
-                  return Promise.resolve();
-                }
-
-                return Promise.reject(
-                  'The two passwords that you entered do not match!'
-                );
+          <Form.Item
+            name="contactName"
+            label="Contact Name"
+            rules={[
+              {
+                required: true,
+                message: 'Please input contact name',
               },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
+            ]}
+            hasFeedback
+          >
+            <Input placeholder="Contact Name" />
+          </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+          <Form.Item
+            name="organizationName"
+            label="Organization Name"
+            rules={[
+              {
+                required: true,
+                message: 'Please input organization name',
+              },
+            ]}
+            hasFeedback
+          >
+            <Input placeholder="Organization Name" />
+          </Form.Item>
+
+          <Form.Item
+            name="organizationWebsite"
+            label="Organization Website"
+            rules={[
+              {
+                required: true,
+                message: 'Please input website',
+              },
+            ]}
+          >
+            <AutoComplete options={websiteOptions} onChange={onWebsiteChange}>
+              <Input placeholder="Organization Website" />
+            </AutoComplete>
+          </Form.Item>
+
+          <Form.Item
+            name="email"
+            label="Contact Email"
+            rules={[
+              {
+                type: 'email',
+                message: 'The input is not a valid email',
+              },
+              {
+                required: true,
+                message: 'Please input email',
+              },
+            ]}
+          >
+            <Input placeholder="Contact Email Address" />
+          </Form.Item>
+
+          <Form.Item
+            name="contactPhone"
+            label="Contact Phone Number"
+            rules={[
+              {
+                required: true,
+                message: 'Please input contact phone number',
+              },
+            ]}
+          >
+            <Input
+              placeholder="Contact Phone Number"
+              style={{
+                width: '100%',
+              }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="address"
+            label="Address"
+            rules={[
+              {
+                required: true,
+                message: 'Please input address',
+              },
+            ]}
+          >
+            <Input
+              placeholder="Address"
+              style={{
+                width: '100%',
+              }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="country"
+            label="Country"
+            rules={[
+              {
+                required: true,
+                message: 'Please input country',
+              },
+            ]}
+          >
+            <Input
+              placeholder="Country"
+              style={{
+                width: '100%',
+              }}
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input password',
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm password',
+              },
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+
+                  return Promise.reject(
+                    'The two passwords entered do not match'
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder="Confirm Password" />
+          </Form.Item>
+
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit" className="btn">
+              Register
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </>
   );
 };
 

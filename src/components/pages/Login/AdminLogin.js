@@ -9,6 +9,8 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import '../../../styles/Login/LoginForm.css';
 
+import ecosoapLogo from '../../../assets/ecosoapLogo.png';
+
 const AdminLogin = props => {
   const history = useHistory();
 
@@ -34,9 +36,9 @@ const AdminLogin = props => {
 
   return (
     <div className="form-container">
+      <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h3>Welcome to EcoSoap Admin Portal</h3>
-        <h3>Login</h3>
+        <h1>Eco-Soap Bank Admin Portal Login</h1>
       </div>
       <Form
         name="normal_login"
@@ -51,13 +53,13 @@ const AdminLogin = props => {
           rules={[
             {
               required: true,
-              message: 'Please input your Username!',
+              message: 'Please input email',
             },
           ]}
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="Email"
           />
         </Form.Item>
         <Form.Item
@@ -65,7 +67,7 @@ const AdminLogin = props => {
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input password',
             },
           ]}
         >
@@ -77,14 +79,14 @@ const AdminLogin = props => {
         </Form.Item>
 
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-          Or <a href="/admin/register">register now!</a>
+          <div className="btnContainer">
+            <Button type="primary" htmlType="submit" className="loginBtn">
+              Log In
+            </Button>
+            <Button href="/register" htmlType="button" className="registerBtn">
+              Register
+            </Button>
+          </div>
         </Form.Item>
       </Form>
     </div>

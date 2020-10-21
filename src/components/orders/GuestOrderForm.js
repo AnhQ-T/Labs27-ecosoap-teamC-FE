@@ -8,9 +8,12 @@ import '../../styles/EcoSoapLogo/EcoSoapLogo.css';
 
 import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
+import DashboardHeader from '../Dashboard/Header/DashboardHeader';
+
 const GuestOrderForm = () => {
   return (
     <>
+      <DashboardHeader />
       <img src={ecosoapLogo} />
       <h1>Guest Checkout</h1>
       <OrderForm />

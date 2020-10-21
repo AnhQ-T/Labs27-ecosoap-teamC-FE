@@ -10,6 +10,8 @@ import NoPriceOrder from './NoPriceOrder';
 
 import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
+import DashboardHeader from '../Dashboard/Header/DashboardHeader';
+
 const OrderConfirmation = props => {
   const {
     organizationName,
@@ -64,6 +66,7 @@ const OrderConfirmation = props => {
 
   return (
     <>
+      <DashboardHeader />
       <img src={ecosoapLogo} />
       <div className="site-card-border-less-wrapper">
         <Card title="Order Confirmation">

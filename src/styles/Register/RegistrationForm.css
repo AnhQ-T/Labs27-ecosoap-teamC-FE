@@ -1,12 +1,24 @@
+body {
+  font-family: 'Muli', sans-serif;
+}
+
 .form-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    width: 30%;
-    transform: translate(-50%, -50%);
+  width: 50%;
+  margin: 2% auto;
+  font-family: 'Muli', sans-serif;
 }
 
 .form-header {
-    text-align: center
+  text-align: center;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  background: #3bb54a;
+  border: none;
+}
+
+.btn:hover {
+  background: #2e8af7;
 }

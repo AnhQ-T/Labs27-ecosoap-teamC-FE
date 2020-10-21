@@ -1,16 +1,40 @@
+body {
+  font-family: 'Muli', sans-serif;
+}
+
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-align: center;
-    background-color: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  background-color: inherit;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 2px;
+  /* font-weight: 800; */
 }
 
 .header-btn {
-    height: 100%;
-    width: 10rem;
+  height: 100%;
+  width: 10rem;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
 }
 
-.header-text {
+.header-btn:hover {
+  color: white;
+  border: none;
+  filter: brightness(110%)
+}
+
+.header-btn:visited {
+    text-decoration: none;
     color: white;
 }
+
