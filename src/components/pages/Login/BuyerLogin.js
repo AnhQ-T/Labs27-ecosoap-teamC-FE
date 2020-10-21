@@ -37,7 +37,7 @@ const BuyerLogin = props => {
       </div>
       <Form
         // name="normal_login"
-        // className="login-form"
+        className="login-form"
         initialValues={{
           remember: true,
         }}
