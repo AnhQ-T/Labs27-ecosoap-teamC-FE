@@ -18,14 +18,12 @@ export const DELETE_ORDER = 'DELETE_ORDER';
 export const DELETE_ORDER_ERROR = 'DELETE_ORDER_ERROR';
 
 export const adminLogin = credentials => dispatch => {
-  console.log(credentials);
   axiosWithAuth()
     .post(
       'https://labs27-ecosoap-teamc-api.herokuapp.com/auth/admin/login',
       credentials
     )
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.token);
       dispatch({
         type: ADMIN_LOGIN_SUCCESS,
@@ -35,7 +33,7 @@ export const adminLogin = credentials => dispatch => {
     .catch(err => {
       dispatch({
         type: ADMIN_LOGIN_FAILURE,
-        payload: err,
+        payload: err.response.data,
       });
     });
 };
@@ -47,7 +45,6 @@ export const adminRegister = credentials => dispatch => {
       credentials
     )
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.token);
       dispatch({
         type: ADMIN_REGISTER_SUCCESS,

@@ -37,7 +37,7 @@ export const buyerLogin = credentials => dispatch => {
     .catch(err => {
       dispatch({
         type: BUYER_LOGIN_FAILURE,
-        payload: err,
+        payload: err.response.data,
       });
     });
 };

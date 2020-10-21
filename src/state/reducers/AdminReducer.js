@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   registerSuccess: false,
   redirect: false,
+  error: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      };
+    case admin.ADMIN_LOGIN_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
       };
     case admin.ADMIN_REGISTER_SUCCESS:
       return {

@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Form,
-  Input,
-  Tooltip,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-} from 'antd';
+import { Form, Input, Button, AutoComplete } from 'antd';
 
 import { connect } from 'react-redux';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { buyerRegister } from '../../../state/actions/BuyerAction';
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { buyerLogin } from '../../../state/actions/BuyerAction';
 
@@ -22,7 +22,6 @@ const BuyerLogin = props => {
   }, [props.isLoggedIn]);
 
   const onFinish = values => {
-    console.log('running');
     buyerLogin(values);
   };
 
@@ -31,6 +30,9 @@ const BuyerLogin = props => {
       <div className="form-header">
         <h3>Welcome to EcoSoap Buyer Portal</h3>
         <h3>Login</h3>
+        {props.error ? (
+          <h3 className="error-message">{props.error.message}</h3>
+        ) : null}
       </div>
       <Form
         name="normal_login"
@@ -89,6 +91,7 @@ const BuyerLogin = props => {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state,
+    error: state.buyer.error,
   };
 };
 

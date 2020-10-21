@@ -1,21 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { adminRegister } from '../../../state/actions/AdminAction';
 
-import {
-  Form,
-  Input,
-  Tooltip,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
-} from 'antd';
+import { Form, Input, Button } from 'antd';
 
 import '../../../styles/Register/RegistrationForm.css';
 

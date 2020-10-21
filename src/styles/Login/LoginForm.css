@@ -22,3 +22,7 @@
 .form-header {
     text-align: center
 }
+
+.error-message {
+  color: #D8000C
+}
