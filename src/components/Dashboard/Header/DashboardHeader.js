@@ -49,7 +49,8 @@ function DashboardHeader() {
           style={{ backgroundColor: '#49129C' }}
           type="button"
         >
-          Request Soap
+          Request <br />
+          Soap
         </Button>
       </Header>
     </div>
