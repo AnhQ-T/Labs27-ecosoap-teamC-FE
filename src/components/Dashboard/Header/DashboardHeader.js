@@ -12,42 +12,45 @@ function DashboardHeader() {
     <div>
       <Header className="header">
         <Button
+          href="/dashboard"
           className="header-btn"
-          style={{ backgroundColor: '#C84E47', color: 'white' }}
-          size="large"
+          style={{ backgroundColor: '#3BB54A' }}
+          type="button"
         >
           Home
         </Button>
         <Button
+          href="#"
           className="header-btn"
-          style={{ backgroundColor: '#FA9100', color: 'white' }}
-          size="large"
+          style={{ backgroundColor: '#2E8AF7' }}
+          type="button"
         >
           About
         </Button>
         <Button
+          href="#"
           className="header-btn"
-          style={{ backgroundColor: '#49129C', color: 'white' }}
-          size="large"
+          style={{ backgroundColor: '#2C9B9A' }}
+          type="button"
         >
           Partners
         </Button>
         <Button
+          href="#"
           className="header-btn"
-          style={{ backgroundColor: '#3BB54A', color: 'white' }}
-          size="large"
+          style={{ backgroundColor: '#2F559C' }}
+          type="button"
         >
           Donate
         </Button>
-        <Link to="/orders">
-          <Button
-            className="header-btn"
-            style={{ backgroundColor: '#2E8AF7', color: 'white' }}
-            size="large"
-          >
-            Request Soap
-          </Button>
-        </Link>
+        <Button
+          href="/orders"
+          className="header-btn"
+          style={{ backgroundColor: '#49129C' }}
+          type="button"
+        >
+          Request Soap
+        </Button>
       </Header>
     </div>
   );
