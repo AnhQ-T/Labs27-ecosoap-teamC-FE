@@ -68,3 +68,7 @@ a {
   text-align: center;
   margin: 0 auto;
 }
+
+.error-message {
+  color: #D8000C
+}

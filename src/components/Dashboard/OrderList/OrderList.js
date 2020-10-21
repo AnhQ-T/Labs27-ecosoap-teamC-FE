@@ -32,7 +32,7 @@ function OrderList(props) {
 
   return (
     <div>
-      {props.buyer_orders_list.buyer ? (
+      {props.buyer_orders_list != null && props.buyer_orders_list.buyer ? (
         <Card title={props.buyer_orders_list.buyer.length + ' orders'}>
           {props.buyer_orders_list.buyer.map((el, i) => (
             <Orders data={el} key={i} />

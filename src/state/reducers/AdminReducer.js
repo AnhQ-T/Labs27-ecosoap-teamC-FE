@@ -5,6 +5,8 @@ const initialState = {
   isFetching: false,
   isLoggedIn: false,
   registerSuccess: false,
+  redirect: false,
+  error: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -13,6 +15,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      };
+    case admin.ADMIN_LOGIN_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
       };
     case admin.ADMIN_REGISTER_SUCCESS:
       return {
@@ -24,12 +31,18 @@ export const reducer = (state = initialState, action) => {
         ...state,
         orders_list: action.payload,
         isFetching: true,
+        redirect: false,
       };
     case admin.GET_ALL_ORDER_DETAILS:
       return {
         ...state,
         current_order: action.payload,
         isFetching: true,
+      };
+    case admin.DELETE_ORDER:
+      return {
+        ...state,
+        redirect: true,
       };
     default:
       return state;

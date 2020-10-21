@@ -14,15 +14,16 @@ export const GET_ALL_ORDERS_ERROR = 'GET_ALL_ORDERS_ERROR';
 export const GET_ALL_ORDER_DETAILS = 'GET_ALL_ORDER_DETAILS';
 export const GET_ALL_ORDER_DETAILS_ERROR = 'GET_ALL_ORDER_DETAILS_ERROR';
 
+export const DELETE_ORDER = 'DELETE_ORDER';
+export const DELETE_ORDER_ERROR = 'DELETE_ORDER_ERROR';
+
 export const adminLogin = credentials => dispatch => {
-  console.log(credentials);
   axiosWithAuth()
     .post(
       'https://labs27-ecosoap-teamc-api.herokuapp.com/auth/admin/login',
       credentials
     )
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.token);
       dispatch({
         type: ADMIN_LOGIN_SUCCESS,
@@ -32,7 +33,7 @@ export const adminLogin = credentials => dispatch => {
     .catch(err => {
       dispatch({
         type: ADMIN_LOGIN_FAILURE,
-        payload: err,
+        payload: err.response.data,
       });
     });
 };
@@ -44,7 +45,6 @@ export const adminRegister = credentials => dispatch => {
       credentials
     )
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.token);
       dispatch({
         type: ADMIN_REGISTER_SUCCESS,
@@ -88,6 +88,22 @@ export const getAllOrderDetails = id => async dispatch => {
   } catch (e) {
     dispatch({
       type: GET_ALL_ORDER_DETAILS_ERROR,
+      payload: console.log(e),
+    });
+  }
+};
+
+export const deleteOrder = id => async dispatch => {
+  try {
+    const res = await axiosWithAuth().delete(
+      `https://labs27-ecosoap-teamc-api.herokuapp.com/orders/${id}`
+    );
+    dispatch({
+      type: DELETE_ORDER,
+    });
+  } catch (e) {
+    dispatch({
+      type: DELETE_ORDER_ERROR,
       payload: console.log(e),
     });
   }

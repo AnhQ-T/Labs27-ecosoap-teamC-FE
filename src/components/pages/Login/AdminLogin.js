@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { adminLogin } from '../../../state/actions/AdminAction';
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import '../../../styles/Login/LoginForm.css';
@@ -25,7 +25,6 @@ const AdminLogin = props => {
   }, [props.isLoggedIn]);
 
   const onFinish = values => {
-    console.log('running');
     adminLogin(values);
   };
 
@@ -38,7 +37,11 @@ const AdminLogin = props => {
     <div className="form-container">
       <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h1>Eco-Soap Bank Admin Portal Login</h1>
+        <h1>Welcome to EcoSoap Admin Portal</h1>
+        <h3>Login</h3>
+        {props.error ? (
+          <h3 className="error-message">{props.error.message}</h3>
+        ) : null}
       </div>
       <Form
         name="normal_login"
@@ -96,6 +99,7 @@ const AdminLogin = props => {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state,
+    error: state.admin.error,
   };
 };
 
