@@ -10,6 +10,8 @@ body {
   border-radius: 2px;
   color: white;
   padding: 1% 2%;
+  width: 30%;
+  font-weight: 500;
 }
 
 .btn:hover {
