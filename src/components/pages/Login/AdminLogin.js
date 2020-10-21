@@ -38,8 +38,7 @@ const AdminLogin = props => {
     <div className="form-container">
       <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h3>Welcome to EcoSoap Admin Portal</h3>
-        <h3>Login</h3>
+        <h1>Eco-Soap Bank Admin Portal Login</h1>
       </div>
       <Form
         name="normal_login"
@@ -80,12 +79,14 @@ const AdminLogin = props => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="loginBtn">
-            Log In
-          </Button>
-          <Button href="/register" htmlType="button" className="registerBtn">
-            Register
-          </Button>
+          <div className="btnContainer">
+            <Button type="primary" htmlType="submit" className="loginBtn">
+              Log In
+            </Button>
+            <Button href="/register" htmlType="button" className="registerBtn">
+              Register
+            </Button>
+          </div>
         </Form.Item>
       </Form>
     </div>

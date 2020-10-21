@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { buyerLogin } from '../../../state/actions/BuyerAction';
 import ecosoapLogo from '../../../assets/ecosoapLogo.png';
 
+import 'antd/dist/antd.css';
 import '../../../styles/Login/LoginForm.css';
 import '../../../styles/EcoSoapLogo/EcoSoapLogo.css';
 
@@ -32,8 +33,7 @@ const BuyerLogin = props => {
     <div className="form-container">
       <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h3>Welcome to Eco-Soap Bank Buyer Portal</h3>
-        <h3>Login</h3>
+        <h1>Eco-Soap Bank Buyer Portal Login</h1>
       </div>
       <Form
         // name="normal_login"
@@ -74,12 +74,14 @@ const BuyerLogin = props => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="loginBtn">
-            Log In
-          </Button>
-          <Button href="/register" htmlType="button" className="registerBtn">
-            Register
-          </Button>
+          <div className="btnContainer">
+            <Button type="primary" htmlType="submit" className="loginBtn">
+              Log In
+            </Button>
+            <Button href="/register" htmlType="button" className="registerBtn">
+              Register
+            </Button>
+          </div>
         </Form.Item>
       </Form>
       <a href="/guest">Guest Checkout</a>
