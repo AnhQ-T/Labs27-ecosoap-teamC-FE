@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useHistory, Link, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { buyerLogin } from '../../../state/actions/BuyerAction';
+import ecosoapLogo from '../../../assets/ecosoapLogo.png';
 
 import '../../../styles/Login/LoginForm.css';
+import '../../../styles/EcoSoapLogo/EcoSoapLogo.css';
 
 const BuyerLogin = props => {
   const history = useHistory();
@@ -28,13 +30,14 @@ const BuyerLogin = props => {
 
   return (
     <div className="form-container">
+      <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h3>Welcome to EcoSoap Buyer Portal</h3>
+        <h3>Welcome to Eco-Soap Bank Buyer Portal</h3>
         <h3>Login</h3>
       </div>
       <Form
-        name="normal_login"
-        className="login-form"
+        // name="normal_login"
+        // className="login-form"
         initialValues={{
           remember: true,
         }}
@@ -45,7 +48,7 @@ const BuyerLogin = props => {
           rules={[
             {
               required: true,
-              message: 'Please input your Email!',
+              message: 'Please input email',
             },
           ]}
         >
@@ -59,7 +62,7 @@ const BuyerLogin = props => {
           rules={[
             {
               required: true,
-              message: 'Please input your Password!',
+              message: 'Please input password',
             },
           ]}
         >
@@ -71,14 +74,12 @@ const BuyerLogin = props => {
         </Form.Item>
 
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
+          <Button type="primary" htmlType="submit" className="loginBtn">
+            Log In
           </Button>
-          Or <a href="/register">register now!</a>
+          <Button href="/register" htmlType="button" className="registerBtn">
+            Register
+          </Button>
         </Form.Item>
       </Form>
       <a href="/guest">Guest Checkout</a>

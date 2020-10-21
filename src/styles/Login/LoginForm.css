@@ -1,4 +1,4 @@
-#components-form-demo-normal-login .login-form {
+/* #components-form-demo-normal-login .login-form {
     max-width: 300px;
   }
   #components-form-demo-normal-login .login-form-forgot {
@@ -9,16 +9,50 @@
   }
   #components-form-demo-normal-login .login-form-button {
     width: 100%;
-  }
+  } */
 
-.form-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
+body {
+  font-family: 'Muli', sans-serif;
 }
 
+/* .form-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
 .form-header {
-    text-align: center
+  text-align: center;
+}
+
+.loginBtn {
+  /* display: block;
+  margin: 0 auto; */
+  background: #3bb54a;
+  border: none;
+}
+
+.loginBtn:hover {
+  background: #2e8af7;
+}
+
+.registerBtn {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background: #3bb54a;
+  border: none;
+}
+
+a {
+  font-weight: 500;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.loginLogo {
+  width: 30%;
+  margin-bottom: 4%;
 }
