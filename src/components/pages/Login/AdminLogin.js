@@ -37,7 +37,7 @@ const AdminLogin = props => {
     <div className="form-container">
       <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h1>Welcome to EcoSoap Admin Portal</h1>
+        <h1>Welcome to Eco-Soap Bank Admin Portal</h1>
         <h3>Login</h3>
         {props.error ? (
           <h3 className="error-message">{props.error.message}</h3>
