@@ -16,6 +16,8 @@ import ecosoapLogo from '../../assets/ecosoapLogo.png';
 
 import OrderReceipt from './OrderReceipt';
 
+import DashboardHeader from '../Dashboard/Header/DashboardHeader';
+
 import axios from 'axios';
 
 const CheckoutForm = props => {
@@ -119,7 +121,7 @@ const CARD_OPTIONS = {
       iconColor: '#c4f0ff',
       color: '#000',
       fontWeight: 500,
-      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+      // fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
       ':-webkit-autofill': { color: '#2F559C' },
@@ -136,23 +138,26 @@ function Stripe(props) {
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   return (
-    <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
-      <img src={ecosoapLogo} />
-      <h1>Eco-Soap Bank Checkout</h1>
-      <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm
-          values={props.location.state.values}
-          success={setOrderSuccess}
-        />
-      </Elements>
-      {orderSuccess == true ? (
-        <OrderReceipt
-          details={props.location.state.values}
-          price={props.location.state.values.priceInfo.price}
-        />
-      ) : null}
-    </div>
+    <>
+      <DashboardHeader />
+      <div className="App" style={{ maxWidth: '400px', margin: '2% auto' }}>
+        <img src={ecosoapLogo} />
+        <h1>Eco-Soap Bank Checkout</h1>
+        <h3>Price: ${props.location.state.values.priceInfo.price / 100}</h3>
+        <Elements stripe={stripePromise}>
+          <CheckoutForm
+            values={props.location.state.values}
+            success={setOrderSuccess}
+          />
+        </Elements>
+        {orderSuccess == true ? (
+          <OrderReceipt
+            details={props.location.state.values}
+            price={props.location.state.values.priceInfo.price}
+          />
+        ) : null}
+      </div>
+    </>
   );
 }
 
