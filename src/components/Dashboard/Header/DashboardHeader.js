@@ -9,7 +9,7 @@ const { Header } = Layout;
 
 function DashboardHeader() {
   return (
-    <div>
+    <div className="headerContainer">
       <Header className="header">
         <Button
           href="/dashboard"

@@ -23,7 +23,7 @@ const formItemLayout = {
 const tailFormItemLayout = {
   wrapperCol: {
     span: 14,
-    offset: 5,
+    offset: 7,
   },
 };
 
@@ -75,9 +75,10 @@ const BuyerRegistration = props => {
   return (
     <>
       {/* <DashboardHeader /> */}
-      <img src={ecosoapLogo} />
-      <h1>Buyer Registration</h1>
+
       <div className="form-container">
+        <img src={ecosoapLogo} />
+        <h1>Buyer Registration</h1>
         <Form
           {...formItemLayout}
           form={form}
@@ -155,12 +156,7 @@ const BuyerRegistration = props => {
               },
             ]}
           >
-            <Input
-              placeholder="Contact Phone Number"
-              style={{
-                width: '100%',
-              }}
-            />
+            <Input placeholder="Contact Phone Number" />
           </Form.Item>
 
           <Form.Item
@@ -173,12 +169,7 @@ const BuyerRegistration = props => {
               },
             ]}
           >
-            <Input
-              placeholder="Address"
-              style={{
-                width: '100%',
-              }}
-            />
+            <Input placeholder="Address" />
           </Form.Item>
 
           <Form.Item
@@ -191,12 +182,7 @@ const BuyerRegistration = props => {
               },
             ]}
           >
-            <Input
-              placeholder="Country"
-              style={{
-                width: '100%',
-              }}
-            />
+            <Input placeholder="Country" />
           </Form.Item>
 
           <Form.Item
@@ -240,9 +226,19 @@ const BuyerRegistration = props => {
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit" className="btn">
-              Register
-            </Button>
+            <div className="registerBtnContainer">
+              <Button type="primary" htmlType="submit" className="register">
+                Register
+              </Button>
+              <Button
+                href="/login"
+                type="primary"
+                htmlType="button"
+                className="cancelBtn"
+              >
+                Cancel
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>
