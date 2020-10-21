@@ -18,7 +18,7 @@ const OrderForm = props => {
   const buttonItemLayout = {
     wrapperCol: {
       span: 14,
-      offset: 4,
+      offset: 5,
     },
   };
 
