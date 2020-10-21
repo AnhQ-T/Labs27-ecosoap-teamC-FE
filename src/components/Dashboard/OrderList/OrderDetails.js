@@ -80,9 +80,7 @@ function OrderDetails(props) {
           </Card>
           <Card>
             <div className="order-summary">
-              {localStorage.getItem('buyer_id') ? (
-                <div></div>
-              ) : (
+              {localStorage.getItem('buyer_id') ? null : (
                 <Button
                   onClick={() => {
                     handleDelete();
