@@ -25,7 +25,6 @@ const BuyerLogin = props => {
   }, [props.isLoggedIn]);
 
   const onFinish = values => {
-    console.log('running');
     buyerLogin(values);
   };
 
@@ -33,7 +32,11 @@ const BuyerLogin = props => {
     <div className="form-container">
       <img src={ecosoapLogo} className="loginLogo" />
       <div className="form-header">
-        <h1>Eco-Soap Bank Buyer Portal Login</h1>
+        <h1>Welcome to EcoSoap Buyer Portal</h1>
+        <h3>Login</h3>
+        {props.error ? (
+          <h3 className="error-message">{props.error.message}</h3>
+        ) : null}
       </div>
       <Form
         // name="normal_login"
@@ -92,6 +95,7 @@ const BuyerLogin = props => {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state,
+    error: state.buyer.error,
   };
 };
 

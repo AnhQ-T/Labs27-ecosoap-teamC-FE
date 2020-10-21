@@ -6,6 +6,7 @@ const initialState = {
   isFetching: false,
   isLoggedIn: false,
   registerSuccess: false,
+  error: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      };
+    case buyer.BUYER_LOGIN_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
       };
     case buyer.BUYER_REGISTER_SUCCESS:
       return {

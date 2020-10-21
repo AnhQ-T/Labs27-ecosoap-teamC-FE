@@ -1,21 +1,35 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getBuyerOrderDetails } from '../../../state/actions/BuyerAction.js';
+import { deleteOrder } from '../../../state/actions/AdminAction.js';
 import '../../../styles/Dashboard/Orders/OrderDetails.css';
 
 import 'antd/dist/antd.css';
-import { Layout, Card, Typography } from 'antd';
+import { Layout, Card, Typography, Button } from 'antd';
 
 function OrderDetails(props) {
+  console.log(props);
+  const history = useHistory();
+
   const { Title } = Typography;
-  const { getBuyerOrderDetails } = props;
+  const { getBuyerOrderDetails, deleteOrder } = props;
   const { id } = useParams();
 
   useEffect(() => {
     getBuyerOrderDetails(id);
-  }, []);
+    if (props.redirect == true) {
+      history.push({
+        pathname: '/dashboard',
+      });
+    }
+  }, [props.redirect]);
+
+  const handleDelete = () => {
+    deleteOrder(id);
+  };
 
   return (
     <div>
@@ -64,6 +78,21 @@ function OrderDetails(props) {
               <h3>Comments: {props.current_order.comments}</h3>
             </div>
           </Card>
+          <Card>
+            <div className="order-summary">
+              {localStorage.getItem('buyer_id') ? null : (
+                <Button
+                  onClick={() => {
+                    handleDelete();
+                  }}
+                  type="primary"
+                  danger
+                >
+                  Delete
+                </Button>
+              )}
+            </div>
+          </Card>
         </div>
       ) : null}
     </div>
@@ -73,7 +102,10 @@ function OrderDetails(props) {
 const mapStateToProps = state => {
   return {
     current_order: state.buyer.current_order,
+    redirect: state.admin.redirect,
   };
 };
 
-export default connect(mapStateToProps, { getBuyerOrderDetails })(OrderDetails);
+export default connect(mapStateToProps, { getBuyerOrderDetails, deleteOrder })(
+  OrderDetails
+);
