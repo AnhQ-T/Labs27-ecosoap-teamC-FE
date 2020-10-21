@@ -5,6 +5,7 @@ const initialState = {
   isFetching: false,
   isLoggedIn: false,
   registerSuccess: false,
+  redirect: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -24,12 +25,18 @@ export const reducer = (state = initialState, action) => {
         ...state,
         orders_list: action.payload,
         isFetching: true,
+        redirect: false,
       };
     case admin.GET_ALL_ORDER_DETAILS:
       return {
         ...state,
         current_order: action.payload,
         isFetching: true,
+      };
+    case admin.DELETE_ORDER:
+      return {
+        ...state,
+        redirect: true,
       };
     default:
       return state;
