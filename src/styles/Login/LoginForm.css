@@ -45,7 +45,9 @@
 }
 
 .loginBtn:hover {
-  background: #2e8af7;
+  background: white;
+  color: #3bb54a;
+  border: 1px solid #3bb54a
 }
 
 .registerBtn {
@@ -58,8 +60,9 @@
 }
 
 .registerBtn:hover {
-  background: #3bb54a;
-  color: white;
+  background: white;
+  color: #2e8af7;
+  border: 1px solid #2e8af7;
 }
 
 a {
