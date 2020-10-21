@@ -12,13 +12,24 @@ body {
   text-align: center;
 }
 
-.btn {
-  display: block;
-  margin: 0 auto;
+.register {
+  /* display: block;
+  margin: 0 auto; */
   background: #3bb54a;
   border: none;
+  width: 30%;
 }
 
-.btn:hover {
+.register:hover {
   background: #2e8af7;
+}
+
+.registerBtnContainer{
+  display: flex;
+}
+
+.cancelBtn {
+  background: white;
+  color: #2e8af7;
+  width: 30%
 }
