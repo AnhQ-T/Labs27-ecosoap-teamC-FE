@@ -4,38 +4,26 @@ import { useHistory } from 'react-router-dom';
 
 import { adminRegister } from '../../../state/actions/AdminAction';
 
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, AutoComplete } from 'antd';
 
 import '../../../styles/Register/RegistrationForm.css';
 
+import DashboardHeader from '../../Dashboard/Header/DashboardHeader';
+
+import ecosoapLogo from '../../../assets/ecosoapLogo.png';
+
 const formItemLayout = {
   labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 8,
-    },
+    span: 8,
   },
   wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
+    span: 14,
   },
 };
 const tailFormItemLayout = {
   wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
+    span: 14,
+    offset: 5,
   },
 };
 
@@ -62,81 +50,83 @@ const AdminRegistration = props => {
   };
 
   return (
-    <div className="form-container">
-      <div className="form-header">
-        <h3>Register your admin account</h3>
-      </div>
-      <Form
-        {...formItemLayout}
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        scrollToFirstError
-      >
-        <Form.Item
-          name="email"
-          label="E-mail"
-          rules={[
-            {
-              type: 'email',
-              message: 'The input is not valid E-mail!',
-            },
-            {
-              required: true,
-              message: 'Please input your E-mail!',
-            },
-          ]}
+    <>
+      <DashboardHeader />
+      <img src={ecosoapLogo} />
+      <h1>Admin Registration</h1>
+      <div className="form-container">
+        <Form
+          {...formItemLayout}
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          scrollToFirstError
         >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="confirm"
-          label="Confirm Password"
-          dependencies={['password']}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Please confirm your password!',
-            },
-            ({ getFieldValue }) => ({
-              validator(rule, value) {
-                if (!value || getFieldValue('password') === value) {
-                  return Promise.resolve();
-                }
-
-                return Promise.reject(
-                  'The two passwords that you entered do not match!'
-                );
+          <Form.Item
+            name="email"
+            label="Email"
+            rules={[
+              {
+                type: 'email',
+                message: 'The input is not a valid email',
               },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
+              {
+                required: true,
+                message: 'Please input email',
+              },
+            ]}
+          >
+            <Input placeholder="Email" />
+          </Form.Item>
 
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input password',
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Please confirm password',
+              },
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+
+                  return Promise.reject(
+                    'The two passwords entered do not match'
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder="Confirm Password" />
+          </Form.Item>
+
+          <Form.Item {...tailFormItemLayout}>
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </>
   );
 };
 
