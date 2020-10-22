@@ -1,19 +1,14 @@
-# Basic SPA - Ecosoap project
+# Ecosoap 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5e37932c610a83213715/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/labs-spa-starter/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/5e37932c610a83213715/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/labs-spa-starter/test_coverage)
 
-> **Disclaimer:** This application is currently in Alpha (as of June 08, 2020) and is not ready for production. Please use at your own risk as things will change almost daily.
+Dashboard for buyer and admin, checkout functionalities.
 
-- Welcome to your `Basic Single Page Application Repository`. Use this to start your own Greenfield Project using ReactJS and common industry standards.
+You can find the deployed site at: 
+Buyer portal: https://27c.ecosoap.dev/
+Admin portal: https://27c.ecosoap.dev/admin
 
-- This repository assumes a handful of industry practices and standards. We strive to keep you on the bleeding edge of the industry and as a result, we have made some opinions for you so that you don't have to; you're welcome.
-
-- The following was built using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) for base boiler-plating. We will maintain the dependencies as according to their specifications as an Engineering Organization.
-
-## StoryBook
-
-- All of the reusable components for this repository can be [found here using a Storybook](https://lambda-school-labs.github.io/labs-spa-starter/?path=/story/form-button--basic-usage).
-- For more information on contributing to our Storybook for this application [you can see here](./src/stories/README.md).
+A video walkthrough of our app is available here: https://drive.google.com/file/d/1dpYnVKaaeAq3YoGisHMZu8kT31qOWAgf/view
 
 ## Requirements
 
