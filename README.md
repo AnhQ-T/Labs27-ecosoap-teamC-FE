@@ -1,7 +1,5 @@
 # Ecosoap 
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/5e37932c610a83213715/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/labs-spa-starter/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/5e37932c610a83213715/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/labs-spa-starter/test_coverage)
-
 Dashboard for buyer and admin, checkout functionalities.
 
 - You can find the deployed site at: 
