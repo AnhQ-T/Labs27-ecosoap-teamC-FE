@@ -8,6 +8,14 @@ Dashboard for buyer and admin, checkout functionalities.
 
 - A video walkthrough of our app is available here: https://drive.google.com/file/d/1dpYnVKaaeAq3YoGisHMZu8kT31qOWAgf/view
 
+## Contributors
+
+|                                                       [Thierry Joux](https://github.com/exploratum)                                                        |                                                      [Anh Truong](https://github.com/AnhQ-T)                                                       |                                                       [Karen Lei](https://github.com/karenwinnielei)                                                        |
+| :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://ca.slack-edge.com/ESZCHB482-W0123RJ91AT-ca163ceee412-512" width = "200" />](https://github.com/exploratum) | [<img src="https://avatars2.githubusercontent.com/u/48456332?s=460&u=f6f36d7598e0402f28142a2cf6510bfeb8b8e037&v=4" width = "200" />](https://github.com/AnhQ-T) | [<img src="https://avatars0.githubusercontent.com/u/61998212?s=460&u=9de2a189e14e76a3f534f034a1a1f0cd3b9885fe&v=4" width = "200" />](https://github.com/karenwinnielei) |
+|                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/exploratum)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AnhQ-T)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/karenwinnielei)                           |
+|                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tjoux/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/anh-q-truong/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/karenwinnielei/)                 |
+
 ## Requirements
 
 - [Labs Engineering Standard requirements found here](https://labs.lambdaschool.com/topics/node-js/)
