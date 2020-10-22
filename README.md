@@ -4,11 +4,11 @@
 
 Dashboard for buyer and admin, checkout functionalities.
 
-You can find the deployed site at: 
-Buyer portal: https://27c.ecosoap.dev/
-Admin portal: https://27c.ecosoap.dev/admin
+- You can find the deployed site at: 
+- Buyer portal: https://27c.ecosoap.dev/
+- Admin portal: https://27c.ecosoap.dev/admin
 
-A video walkthrough of our app is available here: https://drive.google.com/file/d/1dpYnVKaaeAq3YoGisHMZu8kT31qOWAgf/view
+- A video walkthrough of our app is available here: https://drive.google.com/file/d/1dpYnVKaaeAq3YoGisHMZu8kT31qOWAgf/view
 
 ## Requirements
 
